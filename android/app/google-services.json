@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "34295630794",
+    "project_id": "taxdownchallenge",
+    "storage_bucket": "taxdownchallenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34295630794:android:736a3ca5b30adaff009d33",
+        "android_client_info": {
+          "package_name": "com.taxdownchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34295630794-qu073d1r5lc6csqqm91mphl5md8knpqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7arOENkJI5MGCmr_dmCyfoHp4Rxwq1Xs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34295630794-qu073d1r5lc6csqqm91mphl5md8knpqg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "34295630794-a20b10fu22lrathhduj2n0ndfpgq6hot.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.taxdown.challenge"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

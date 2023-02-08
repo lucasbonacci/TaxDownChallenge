@@ -12,6 +12,10 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.7",
+    "@react-native-firebase/analytics": "^14.2.1",
+    "@react-native-firebase/app": "^14.2.1",
+    "@react-native-firebase/auth": "^14.2.1",
+    "@react-native-firebase/firestore": "^14.12.0",
     "@react-native-masked-view/masked-view": "^0.2.7",
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/native": "^6.0.11",
