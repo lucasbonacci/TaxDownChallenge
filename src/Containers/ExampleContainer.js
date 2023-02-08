@@ -13,19 +13,24 @@ import { Brand } from '@/Components'
 import { useTheme } from '@/Hooks'
 import { useLazyFetchOneQuery } from '@/Services/modules/users'
 import { changeTheme } from '@/Store/Theme'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import {
+  faLockOpen,
+  faLock,
+  faSquareQuestion,
+  faBarcode,
+  faBinarySlash,
+  faXmark,
+  faSquareCheck,
+} from '@fortawesome/pro-solid-svg-icons'
+import { SVG } from '@/Assets/Images/index.js'
 
 const ExampleContainer = () => {
   const { t } = useTranslation()
-  const { Common, Fonts, Gutters, Layout } = useTheme()
+  const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const dispatch = useDispatch()
-
-  const [userId, setUserId] = useState('9')
-  const [fetchOne, { data, isSuccess, isLoading, isFetching, error }] =
-    useLazyFetchOneQuery()
-
-  useEffect(() => {
-    fetchOne(userId)
-  }, [fetchOne, userId])
 
   const onChangeTheme = ({ theme, darkMode }) => {
     dispatch(changeTheme({ theme, darkMode }))
@@ -40,60 +45,8 @@ const ExampleContainer = () => {
         Gutters.smallHPadding,
       ]}
     >
-      <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
-        {(isLoading || isFetching) && <ActivityIndicator />}
-        {!isSuccess ? (
-          <Text style={Fonts.textRegular}>{error}</Text>
-        ) : (
-          <Text style={Fonts.textRegular}>
-            {t('example.helloUser', { name: data?.name })}
-          </Text>
-        )}
-      </View>
-      <View
-        style={[
-          Layout.row,
-          Layout.rowHCenter,
-          Gutters.smallHPadding,
-          Gutters.largeVMargin,
-          Common.backgroundPrimary,
-        ]}
-      >
-        <Text style={[Layout.fill, Fonts.textCenter, Fonts.textSmall]}>
-          {t('firstScreen.title')}
-        </Text>
-        <TextInput
-          onChangeText={setUserId}
-          editable={!isLoading}
-          keyboardType={'number-pad'}
-          maxLength={1}
-          value={userId}
-          selectTextOnFocus
-          style={[Layout.fill, Common.textInput]}
-        />
-      </View>
-      <Text style={[Fonts.textRegular, Gutters.smallBMargin]}>DarkMode :</Text>
-
-      <TouchableOpacity
-        style={[Common.button.rounded, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: null })}
-      >
-        <Text style={Fonts.textRegular}>Auto</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[Common.button.outlineRounded, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: true })}
-      >
-        <Text style={Fonts.textRegular}>Dark</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[Common.button.outline, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: false })}
-      >
-        <Text style={Fonts.textRegular}>Light</Text>
-      </TouchableOpacity>
+      <SVG.Logo height={150} width={24} fillColor="none" />
+      <SVG.EntryCodes height={150} width={24} fillColor="#FFFFFF" />
     </ScrollView>
   )
 }
