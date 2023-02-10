@@ -1,0 +1,40 @@
+{
+  "validation": {
+    "errorMessages": {
+      "email": {
+        "required": "Email is a required field",
+        "valid": "Please provide a valid email"
+      },
+      "pass": {
+        "required": "Password is a required field",
+        "validationError": "Please create a new password that meets requirements"
+      }
+    }
+  },
+
+  "passRequirments": [
+    "At least 6 characters",
+    "At least one lower case",
+    "At least one upper case",
+    "At least one number",
+    "At least one special character"
+  ],
+  
+  "header": "Create an account",
+  "fields": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email"
+    },
+    
+    "pass": {
+      "label": "Password",
+      "placeholder": "Enter your password"
+    },
+    "repeatPass": {
+      "label": "Repeat password",
+      "placeholder": "Enter your password"
+    }
+  },
+  "submitBtnLabel": "Create account"
+}

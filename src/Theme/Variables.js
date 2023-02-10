@@ -10,13 +10,42 @@
  */
 export const Colors = {
   // Example colors:
-  transparent: 'rgba(0,0,0,0)',
-  inputBackground: '#FFFFFF',
-  white: '#ffffff',
-  text: '#212529',
-  primary: '#E14032',
-  success: '#28a745',
-  error: '#dc3545',
+  red: '#FF3B30',
+  blue: '#007AFF',
+  yellow: '#D7C317',
+  green: '#008000',
+  // Grays
+  gray: '#f4f4f4',
+  gray1: '#f2f2f2',
+  gray3: '#929192',
+
+  //blues
+  blue1: '#2f2e46',
+  blue2: '#3d3a62',
+  blue3: '#848395',
+  blue4: '#c2c2ca',
+  blue5: '#e1e1e8',
+
+  transparentBlack: 'rgba(0, 0, 0, 0.5)',
+  // Primarys
+  success: '#00B574',
+  error: '#B50B00',
+  white: '#FEFEFF',
+  warning: '#F7CE46',
+  primaryFixed: '#00A99E',
+  darker: '#222222',
+  // Primary variant
+  primary: '#00dc5a',
+  green0: '#00b94b',
+  green1: '#397451',
+  green2: '#99f1bd',
+  green3: '#e0f7e9',
+  green4: '#397451',
+  green5: '#f5f9f6',
+  green6: '#569A72',
+
+  secundary: '#003A70',
+  light: '#A1DEE5',
 }
 
 export const NavigationColors = {
@@ -27,9 +56,11 @@ export const NavigationColors = {
  * FontSize
  */
 export const FontSize = {
-  small: 16,
-  regular: 20,
-  large: 40,
+  huge: 24,
+  large: 20,
+  regular: 16,
+  small: 14,
+  tiny: 12,
 }
 
 /**

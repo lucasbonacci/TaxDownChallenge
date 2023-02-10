@@ -1,0 +1,21 @@
+{
+  "errorMessages": {
+    "email": {
+      "required": "Email is a required field",
+      "valid": "Please provide a valid email"
+    },
+    "pass": {
+      "required": "Password is a required field",
+      "tooShort": "Password must be at least 6 characters",
+      "tooLong": "Password must be at most 12 characters"
+    }
+  },
+  "emailInput": "Email Address",
+  "emailPlaceholder": "Enter your email",
+  "passwordInput": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "loginBtnLabel": "Login",
+  "signUpBtnLabel": "Don't have an account?",
+  "signUpBtnLabelTwo": " Sign Up",
+  "forgotPasswordBtnLabel": "Forgot password?"
+}

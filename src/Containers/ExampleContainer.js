@@ -1,52 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import {
-  View,
-  ActivityIndicator,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native'
-import { useDispatch } from 'react-redux'
+import React from 'react'
+import { View, ScrollView } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { Brand } from '@/Components'
+import { Button } from '@/Components'
 import { useTheme } from '@/Hooks'
-import { useLazyFetchOneQuery } from '@/Services/modules/users'
-import { changeTheme } from '@/Store/Theme'
-import auth from '@react-native-firebase/auth'
-import firestore from '@react-native-firebase/firestore'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import {
-  faLockOpen,
-  faLock,
-  faSquareQuestion,
-  faBarcode,
-  faBinarySlash,
-  faXmark,
-  faSquareCheck,
-} from '@fortawesome/pro-solid-svg-icons'
-import { SVG } from '@/Assets/Images/index.js'
+
+import { logout } from '@/Store/Auth'
 
 const ExampleContainer = () => {
-  const { t } = useTranslation()
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const dispatch = useDispatch()
+  const { loading } = useSelector(({ auth }) => auth)
 
-  const onChangeTheme = ({ theme, darkMode }) => {
-    dispatch(changeTheme({ theme, darkMode }))
+  const onLogout = () => {
+    dispatch(logout())
   }
 
   return (
     <ScrollView
-      style={Layout.fill}
+      style={[Layout.fill, Common.backgroundPrimary]}
       contentContainerStyle={[
         Layout.fill,
         Layout.colCenter,
         Gutters.smallHPadding,
       ]}
     >
-      <SVG.Logo height={150} width={24} fillColor="none" />
-      <SVG.EntryCodes height={150} width={24} fillColor="#FFFFFF" />
+      <View style={[Gutters.regularPadding]}>
+        <Button
+          variant="default"
+          title={'sing out'}
+          onPress={onLogout}
+          loading={loading}
+        />
+      </View>
     </ScrollView>
   )
 }

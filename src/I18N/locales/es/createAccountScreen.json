@@ -1,0 +1,41 @@
+{
+  "validation": {
+    "errorMessages": {
+      "email": {
+        "required": "Email es un campo requerido",
+
+        "valid":  "Por favor proporcione un email"
+      },
+      "pass": {
+        "required": "La contraseña es un campo requerido",
+        "validationError": "Por favor cree una nueva contraseña que cumpla con los requisitos"
+      }
+    }
+  },
+
+  "passRequirments": [
+    "Al menos 6 caracteres",
+    "Al menos una minúscula",
+    "Al menos una mayúscula",
+    "Al menos un número",
+    "Al menos un carácter especial"
+  ],
+  
+  "header": "Crear cuenta",
+  "fields": {
+    "email": {
+      "label": "Crear una cuenta",
+      "placeholder": "Dirección de email"
+    },
+    
+    "pass": {
+      "label": "Contraseña",
+      "placeholder": "Ingrese su contraseña"
+    },
+    "repeatPass": {
+      "label": "Repetir contraseña",
+      "placeholder": "Ingrese su contraseña"
+    }    
+  },
+  "submitBtnLabel": "Continuar"
+}

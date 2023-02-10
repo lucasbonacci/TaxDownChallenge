@@ -1,0 +1,21 @@
+{
+  "errorMessages": {
+    "email": {
+      "required": "Email es un campo requerido",
+      "valid": "Por favor proporciona un correo electrónico válido"
+    },
+    "pass": {
+      "required": "Contraseña es un campo requerido",
+      "tooShort": "La contraseña debe tener al menos 6 caracteres",
+      "tooLong": "La contraseña debe tener como máximo 12 caracteres"
+    }
+  },
+  "emailInput": "Email",
+  "emailPlaceholder": "bruce.wayne@ejemplo.com",
+  "passwordInput": "Contraseña",
+  "passwordPlaceholder": "*******",
+  "loginBtnLabel": "Continuar",
+  "signUpBtnLabel": "¿No tienes cuenta?",
+  "signUpBtnLabelTwo": " Crear cuenta",
+  "forgotPasswordBtnLabel": "Has olvidado tu contraseña?"
+}

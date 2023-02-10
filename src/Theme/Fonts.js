@@ -10,33 +10,43 @@ import { StyleSheet } from 'react-native'
  */
 export default function ({ FontSize, Colors }) {
   return StyleSheet.create({
-    textSmall: {
-      fontSize: FontSize.small,
-      color: Colors.text,
+    display: {
+      fontSize: FontSize.huge,
+      color: Colors.darker,
     },
-    textRegular: {
-      fontSize: FontSize.regular,
-      color: Colors.text,
-    },
-    textLarge: {
+    headline: {
       fontSize: FontSize.large,
-      color: Colors.text,
+      color: Colors.darker,
     },
-    titleSmall: {
-      fontSize: FontSize.small * 2,
-      fontWeight: 'bold',
-      color: Colors.text,
+    body: {
+      fontSize: FontSize.regular,
+      color: Colors.darker,
     },
-    titleRegular: {
-      fontSize: FontSize.regular * 2,
-      fontWeight: 'bold',
-      color: Colors.text,
+    bodyAlt: {
+      fontSize: FontSize.small,
+      color: Colors.darker,
     },
-    titleLarge: {
-      fontSize: FontSize.large * 2,
-      fontWeight: 'bold',
-      color: Colors.text,
+
+    button: {
+      fontSize: FontSize.regular,
+      color: Colors.darker,
     },
+
+    buttonAlt: {
+      fontSize: FontSize.regular,
+      color: Colors.darker,
+    },
+
+    buttonLink: {
+      fontSize: FontSize.small,
+      color: Colors.darker,
+    },
+
+    small: {
+      fontSize: FontSize.tiny,
+      color: Colors.darker,
+    },
+
     textCenter: {
       textAlign: 'center',
     },
@@ -48,6 +58,18 @@ export default function ({ FontSize, Colors }) {
     },
     textRight: {
       textAlign: 'right',
+    },
+    textBold: {
+      fontWeight: 'bold',
+    },
+    textPrimary: {
+      color: Colors.primary,
+    },
+    textLink: {
+      color: Colors.green1,
+    },
+    textError: {
+      color: Colors.error,
     },
   })
 }
