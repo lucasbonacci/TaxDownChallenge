@@ -5,12 +5,11 @@ import Svg, { Mask, Path, G } from 'react-native-svg'
 const Logo = props => {
   const { width = 24, height = 150, fillColor = 'none' } = props
 
-  console.log(props)
   return (
     <Svg
       {...props}
-      width={'100%'}
-      height={150}
+      width={width}
+      height={height}
       viewBox="0 0 151.002 24"
       fill={fillColor}
       xmlns="http://www.w3.org/2000/svg"
