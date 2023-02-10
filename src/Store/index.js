@@ -14,10 +14,12 @@ import {
 
 import theme from './Theme'
 import auth from './Auth'
+import taxes from './Taxes'
 
 const reducers = combineReducers({
   theme,
   auth,
+  taxes,
 })
 
 const persistConfig = {
