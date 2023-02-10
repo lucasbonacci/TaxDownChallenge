@@ -41,7 +41,6 @@ export const VerifyAuthState = createAsyncThunk(
           screen: 'Dashboard',
         })
       } else {
-        dispatch(logout())
         navigateAndSimpleReset('Login')
       }
     } catch (err) {
