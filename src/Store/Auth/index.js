@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { navigate, navigateAndSimpleReset } from '@/Navigators/utils'
+import { navigateAndSimpleReset } from '@/Navigators/utils'
 import { AlertError } from '@/Services/Alerts'
-import { store } from '@/Store'
-import auth from '@react-native-firebase/auth'
+import AuthManager from '@/Services/AuthManager/index'
 
 const initialState = {
   loading: false,
@@ -12,7 +11,7 @@ export const emailLogin = createAsyncThunk(
   'sign_in',
   async ({ email, password }) => {
     try {
-      const response = await auth().signInWithEmailAndPassword(email, password)
+      const response = AuthManager.signInWithEmailAndPassword(email, password)
       return response
     } catch (err) {
       AlertError(err.message)
@@ -23,7 +22,7 @@ export const emailLogin = createAsyncThunk(
 
 export const logout = createAsyncThunk('sign_out', async () => {
   try {
-    const response = await auth().signOut()
+    const response = AuthManager.signOut()
     return response
   } catch (err) {
     AlertError(err.message)
@@ -37,7 +36,7 @@ export const VerifyAuthState = createAsyncThunk(
   async (user, { dispatch }) => {
     try {
       if (user) {
-        navigate('Main', {
+        navigateAndSimpleReset('Main', {
           screen: 'Dashboard',
         })
       } else {
@@ -54,7 +53,7 @@ export const createAccount = createAsyncThunk(
   'create_account',
   async ({ email, password }) => {
     try {
-      const response = await auth().createUserWithEmailAndPassword(
+      const response = AuthManager.createUserWithEmailAndPassword(
         email,
         password,
       )
