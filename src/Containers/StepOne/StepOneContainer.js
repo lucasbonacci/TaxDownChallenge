@@ -7,7 +7,9 @@ import { getTaxes } from '@/Store/Taxes'
 
 const StepOneContainer = () => {
   const dispatch = useDispatch()
-  const { inactiveTaxes, activeTaxes } = useSelector(({ taxes }) => taxes)
+  const { inactiveTaxesList, activeTaxesList, loading } = useSelector(
+    ({ taxes }) => taxes,
+  )
   const [activeTab, setActiveTab] = useState('activeTaxes')
   const { t } = useTranslation()
 
@@ -36,8 +38,9 @@ const StepOneContainer = () => {
     <StepOneView
       activeTab={activeTab}
       itemsTab={itemsTab}
-      inactiveTaxes={inactiveTaxes}
-      activeTaxes={activeTaxes}
+      inactiveTaxesList={inactiveTaxesList}
+      activeTaxesList={activeTaxesList}
+      loading={loading}
     />
   )
 }

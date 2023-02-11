@@ -3,8 +3,8 @@ import { AlertError } from '@/Services/Alerts'
 import TaxesManager from '@/Services/TaxesManager'
 
 const initialState = {
-  activeTaxes: [],
-  inactiveTaxes: [],
+  activeTaxesList: [],
+  inactiveTaxesList: [],
   loading: false,
 }
 
@@ -28,8 +28,8 @@ const slice = createSlice({
       state.loading = true
     }),
       builder.addCase(getTaxes.fulfilled, (state, { payload }) => {
-        state.activeTaxes = payload.activeTaxes
-        state.inactiveTaxes = payload.inactiveTaxes
+        state.activeTaxesList = payload.activeTaxes
+        state.inactiveTaxesList = payload.inactiveTaxes
         state.loading = false
       }),
       builder.addCase(getTaxes.rejected, state => {
