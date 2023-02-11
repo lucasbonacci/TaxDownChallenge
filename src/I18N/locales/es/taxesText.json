@@ -1,0 +1,41 @@
+{
+"labels": {
+    "activeTaxes": "Impuestos Activos",
+    "inactiveTaxes": "Impuestos Inactivos" ,
+    "allTaxes":"Todos",
+    "byYear":"Ano",
+    "byAge":"Edad",
+    "none":"None",
+    "noFounded": "No se encontro ningun impuesto"
+    },
+"addForm":{
+    "name":"nombre del impuesto",
+    "year":"anio del impuesto",
+    "active":"Este impuesto esta activo?",
+    "addBtn":"Agregar"
+        },
+"errorMessages": {
+    "name": {
+        "required": "Nombre es un campo requerido"
+    },
+    "active": {
+        "required": "es un campo requerido"
+    },
+    "year": {
+        "required": "year es un campo requerido",
+        "negative": "El numero es negativo",
+        "higher": "Es mayor que 2023"
+    }
+},
+"deleteMode": {
+    "selectAllBtnLabel": "Select All",
+    "deselectAllBtnLabel": "Deselect All",
+    "deleteBtnLabel": "Delete",
+    "headerDeleteMode": "{{checkedItemsCount}} selected",
+    "modal":{
+        "header": "Are you sure you want to do this action?" ,
+        "cancelBtn": "Cancel",
+        "confirmBtn": "Confirm"
+    }
+  }
+}

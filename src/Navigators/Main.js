@@ -1,11 +1,17 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { ExampleContainer, StepOneContainer } from '@/Containers'
-import { ShareButton } from '@/Components'
+import { TaxListContainer, AddTaxContainer } from '@/Containers'
+import { ShareButton, DeleteButton } from '@/Components'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useTranslation } from 'react-i18next'
-import { fa2, fa3, fa4 } from '@fortawesome/free-solid-svg-icons'
+import {
+  faClipboardList,
+  faPlus,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/Hooks'
+import { useSelector } from 'react-redux'
+import { SVG } from '@/Assets/svg/index.js'
 
 const Tab = createBottomTabNavigator()
 
@@ -13,31 +19,34 @@ const Tab = createBottomTabNavigator()
 const MainNavigator = () => {
   const { Fonts, Colors, Layout, Gutters } = useTheme()
   const { t } = useTranslation()
+  const { deleteMode } = useSelector(({ taxes }) => taxes)
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="secondStep"
-        component={StepOneContainer}
+        name="taxList"
+        component={TaxListContainer}
         options={{
-          headerShown: true,
+          headerShown: !deleteMode,
           tabBarShowLabel: false,
           gestureEnabled: false,
-          title: t('headerTitles.secondStep'),
-          headerRight: () => (
+          title: 'TaxDown',
+          headerLeft: () => (
             <ShareButton message={t('shareMessages.inviteToKnowTheApp')} />
           ),
+          headerRight: () => <DeleteButton />,
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
-              icon={fa2}
+              icon={faMagnifyingGlass}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
           ),
         }}
       />
+
       <Tab.Screen
         name="thirdStep"
-        component={ExampleContainer}
+        component={AddTaxContainer}
         options={{
           headerShown: true,
           tabBarShowLabel: false,
@@ -45,24 +54,7 @@ const MainNavigator = () => {
           title: t('headerTitles.thirdStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
-              icon={fa3}
-              size={size}
-              color={focused ? Colors.primary : Colors.lcGray}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="fourthStep"
-        component={ExampleContainer}
-        options={{
-          headerShown: true,
-          tabBarShowLabel: false,
-          gestureEnabled: false,
-          title: t('headerTitles.fourthStep'),
-          tabBarIcon: ({ focused, size }) => (
-            <FontAwesomeIcon
-              icon={fa4}
+              icon={faPlus}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />

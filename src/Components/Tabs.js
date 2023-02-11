@@ -3,39 +3,32 @@ import PropTypes from 'prop-types'
 import { View, TouchableHighlight, Text } from 'react-native'
 import { useTheme } from '@/Hooks'
 
-const TabsComponent = ({ items, activeId, ...rest }) => {
-  const { Layout, Common } = useTheme()
-  const styles = {
-    primary: {
-      button: Common.button,
-      buttonText: Common.buttonText,
-    },
-    default: {
-      button: Common.defaultButton,
-      buttonText: Common.defaultButtonText,
-    },
-  }
+const TabsComponent = ({ items, activeId, label, ...rest }) => {
+  const { Layout, Common, Gutters } = useTheme()
 
   return (
-    <View style={[Layout.row, Common.tabContainer, { width: '100%' }]}>
-      {items.map(({ id, title, action }, key) => (
-        <View
-          style={[Layout.colCenter, { width: `${100 / items.length}%` }]}
-          key={key}
-        >
-          <TouchableHighlight
-            activeOpacity={0.3}
-            underlayColor={Common.defaultButton}
-            style={[
-              Common.defaultButton,
-              id === activeId ? Common.lightButton : Common.linkButton,
-            ]}
-            onPress={action}
+    <View>
+      {!!label && <Text style={[Gutters.tinyBPadding]}>{label}:</Text>}
+      <View style={[Layout.row, Common.tabContainer, { width: '100%' }]}>
+        {items.map(({ id, title, action }, key) => (
+          <View
+            style={[Layout.colCenter, { width: `${100 / items.length}%` }]}
+            key={key}
           >
-            <Text style={[Common.regularDefaultButtonText]}>{title}</Text>
-          </TouchableHighlight>
-        </View>
-      ))}
+            <TouchableHighlight
+              activeOpacity={0.3}
+              underlayColor={Common.defaultButton}
+              style={[
+                Common.defaultButton,
+                id === activeId ? Common.lightButton : Common.linkButton,
+              ]}
+              onPress={action}
+            >
+              <Text style={[Common.regularDefaultButtonText]}>{title}</Text>
+            </TouchableHighlight>
+          </View>
+        ))}
+      </View>
     </View>
   )
 }

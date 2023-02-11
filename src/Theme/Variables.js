@@ -27,6 +27,7 @@ export const Colors = {
   blue5: '#e1e1e8',
 
   transparentBlack: 'rgba(0, 0, 0, 0.5)',
+  lcWhite: '#F1F1F1',
   // Primarys
   success: '#00B574',
   error: '#B50B00',
