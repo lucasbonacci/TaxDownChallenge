@@ -6,7 +6,6 @@ class TaxesManager {
 
   getTaxesList = data => {
     return new Promise((resolve, reject) => {
-      console.log(data)
       try {
         let listRef = database().ref(`taxes`)
 
@@ -86,6 +85,19 @@ class TaxesManager {
 
         collectionRef.push(data)
         resolve(data)
+      } catch (error) {
+        AlertError(error)
+        reject()
+      }
+    })
+  }
+
+  deleteTax = async id => {
+    return new Promise((resolve, reject) => {
+      try {
+        const collectionRef = database().ref(`taxes/${id}`)
+        collectionRef.ref.remove()
+        resolve()
       } catch (error) {
         AlertError(error)
         reject()

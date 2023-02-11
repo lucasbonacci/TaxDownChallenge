@@ -3,9 +3,9 @@ import { AlertError, AlertSuccess } from '@/Services/Alerts'
 import TaxesManager from '@/Services/TaxesManager'
 
 const initialState = {
-  activeTaxesList: [],
-  inactiveTaxesList: [],
+  list: [],
   loading: false,
+  deleteMode: false,
 }
 
 export const getTaxes = createAsyncThunk('get_taxes', async data => {
@@ -30,10 +30,25 @@ export const addTax = createAsyncThunk('add_tax', async data => {
   }
 })
 
+export const deleteTax = createAsyncThunk('delete_tax', async ({ id }) => {
+  try {
+    const response = await TaxesManager.deleteTax(id)
+    AlertSuccess('tax was deleted')
+    return response
+  } catch (err) {
+    AlertError(err.message)
+    throw err
+  }
+})
+
 const slice = createSlice({
   name: 'taxes',
   initialState,
-  reducers: {},
+  reducers: {
+    setDeleteMode: (state, { payload }) => {
+      state.deleteMode = payload
+    },
+  },
   extraReducers: builder => {
     builder.addCase(getTaxes.pending, state => {
       state.loading = true
@@ -55,11 +70,6 @@ const slice = createSlice({
           id: payload.id,
           active: payload.active,
         }
-        if (payload.active) {
-          state.activeTaxesList = [...state.activeTaxesList, newTax]
-        } else {
-          state.inactiveTaxesList = [...state.inactiveTaxesList, newTax]
-        }
         state.loading = false
       }),
       builder.addCase(addTax.rejected, state => {
@@ -70,6 +80,6 @@ const slice = createSlice({
 
 const { reducer } = slice
 
-export const {} = slice.actions
+export const { setDeleteMode } = slice.actions
 
 export default reducer

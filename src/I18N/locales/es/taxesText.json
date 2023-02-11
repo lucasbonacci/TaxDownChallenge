@@ -26,5 +26,11 @@
         "negative": "El numero es negativo",
         "higher": "Es mayor que 2023"
     }
-}
+},
+"deleteMode": {
+    "selectAllBtnLabel": "Select All",
+    "deselectAllBtnLabel": "Deselect All",
+    "deleteBtnLabel": "Delete",
+    "headerDeleteMode": "{{checkedItemsCount}} selected"
+  }
 }

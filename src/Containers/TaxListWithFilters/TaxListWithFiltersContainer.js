@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import TaxListWithFiltersView from './TaxListWithFiltersView'
 import useDebounce from '@/Hooks/useDebounce'
 import { generateYear, generateAge } from '@/Helpers/generateYear'
-import { getTaxes } from '@/Store/Taxes'
+import { getTaxes, deleteTax, setDeleteMode } from '@/Store/Taxes'
 
 const TaxListWithFiltersContainer = () => {
   const dispatch = useDispatch()
-  const { list, loading } = useSelector(({ taxes }) => taxes)
+  const { list, loading, deleteMode } = useSelector(({ taxes }) => taxes)
   const [activeTab, setActiveTab] = useState('allTaxes')
   const [activeTabSelect, setActiveTabSelect] = useState('none')
   const [selectedValueYear, setSelectedValueYear] = useState('')
   const [selectedValueAge, setSelectedValueAge] = useState('')
   const [search, setSearch] = useState('')
+  const [taxesSelecteds, setTaxesSelecteds] = useState([])
 
   const searchDebounce = useDebounce(search, 500)
   const selectedYearDebounce = useDebounce(selectedValueYear, 500)
@@ -40,6 +41,30 @@ const TaxListWithFiltersContainer = () => {
     selectedAgeDebounce,
     selectedYearDebounce,
   ])
+
+  const deleteTaxAction = id => {
+    dispatch(deleteTax({ id }))
+  }
+
+  const selectAllTaxes = () => {
+    const idTaxes = list.map(tax => tax.id)
+    setTaxesSelecteds(idTaxes)
+  }
+
+  const deselectAllTaxes = () => {
+    setTaxesSelecteds([])
+  }
+
+  const selectTaxes = useCallback(
+    id => {
+      setTaxesSelecteds(prevTaxes => {
+        return prevTaxes.includes(id)
+          ? prevTaxes.filter(selectId => selectId !== id)
+          : [...prevTaxes, id]
+      })
+    },
+    [taxesSelecteds],
+  )
 
   const itemsTab = [
     {
@@ -109,6 +134,12 @@ const TaxListWithFiltersContainer = () => {
       ageOptions={ageOptions}
       setSearch={setSearch}
       search={setSearch}
+      deleteTaxAction={deleteTaxAction}
+      deleteMode={deleteMode}
+      deselectAllTaxes={deselectAllTaxes}
+      selectAllTaxes={selectAllTaxes}
+      taxesSelecteds={taxesSelecteds}
+      selectTaxes={selectTaxes}
     />
   )
 }

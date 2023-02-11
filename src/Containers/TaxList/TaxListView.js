@@ -2,9 +2,11 @@ import React from 'react'
 import { View, ScrollView, Text } from 'react-native'
 import { useTheme } from '@/Hooks'
 import { Tabs, Box, ListItem, Loading } from '@/Components'
+import { useTranslation } from 'react-i18next'
 
 const TaxListView = ({ activeTab, itemsTab, list, loading }) => {
-  const { Common, Gutters, Layout, Colors } = useTheme()
+  const { Common, Gutters, Layout, Colors, Fonts } = useTheme()
+  const { t } = useTranslation()
 
   return (
     <View
@@ -17,7 +19,7 @@ const TaxListView = ({ activeTab, itemsTab, list, loading }) => {
         <Box>
           {loading ? (
             <Loading />
-          ) : list.length === 0 ? (
+          ) : list?.length === 0 ? (
             <Text style={[Fonts.headline, Fonts.textCenter]}>
               {t('taxesText.labels.noFounded')}
             </Text>
