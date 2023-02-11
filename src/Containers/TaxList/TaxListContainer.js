@@ -38,8 +38,7 @@ const TaxListContainer = () => {
     <TaxListView
       activeTab={activeTab}
       itemsTab={itemsTab}
-      inactiveTaxesList={inactiveTaxesList}
-      activeTaxesList={activeTaxesList}
+      list={activeTab === 'activeTaxes' ? activeTaxesList : inactiveTaxesList}
       loading={loading}
     />
   )

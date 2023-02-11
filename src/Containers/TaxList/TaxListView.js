@@ -1,37 +1,35 @@
 import React from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 import { useTheme } from '@/Hooks'
 import { Tabs, Box, ListItem, Loading } from '@/Components'
 
-const TaxListView = ({
-  activeTab,
-  itemsTab,
-  inactiveTaxesList,
-  activeTaxesList,
-  loading,
-}) => {
+const TaxListView = ({ activeTab, itemsTab, list, loading }) => {
   const { Common, Gutters, Layout, Colors } = useTheme()
 
   return (
-    <ScrollView
-      style={[Layout.fill, Common.backgroundPrimary]}
-      contentContainerStyle={[Layout.fill, Gutters.smallHPadding]}
+    <View
+      style={[Layout.fill, Common.backgroundPrimary, Gutters.regularPadding]}
     >
       <View style={[Gutters.regularVPadding]}>
         <Tabs activeId={activeTab} items={itemsTab} />
       </View>
-      <Box>
-        {loading ? (
-          <Loading />
-        ) : (
-          <ListItem
-            items={
-              activeTab === 'activeTaxes' ? activeTaxesList : inactiveTaxesList
-            }
-          />
-        )}
-      </Box>
-    </ScrollView>
+
+      <ScrollView>
+        <Box>
+          {loading ? (
+            <Loading />
+          ) : (
+            list.map((item, index) => {
+              return (
+                <View key={index} index={index}>
+                  <ListItem item={item} lastItem={index === list.length - 1} />
+                </View>
+              )
+            })
+          )}
+        </Box>
+      </ScrollView>
+    </View>
   )
 }
 

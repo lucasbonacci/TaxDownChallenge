@@ -20,24 +20,6 @@ const MainNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="thirdStep"
-        component={AddTaxContainer}
-        options={{
-          headerShown: true,
-          tabBarShowLabel: false,
-          gestureEnabled: false,
-          title: t('headerTitles.thirdStep'),
-          tabBarIcon: ({ focused, size }) => (
-            <FontAwesomeIcon
-              icon={faPlus}
-              size={size}
-              color={focused ? Colors.primary : Colors.lcGray}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
         name="taxList"
         component={TaxListContainer}
         options={{
@@ -51,6 +33,24 @@ const MainNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faClipboardList}
+              size={size}
+              color={focused ? Colors.primary : Colors.lcGray}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="thirdStep"
+        component={AddTaxContainer}
+        options={{
+          headerShown: true,
+          tabBarShowLabel: false,
+          gestureEnabled: false,
+          title: t('headerTitles.thirdStep'),
+          tabBarIcon: ({ focused, size }) => (
+            <FontAwesomeIcon
+              icon={faPlus}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
