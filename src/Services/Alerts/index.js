@@ -21,7 +21,7 @@ export const AlertSuccess = (data = 'Success') => {
     message: `${data}`,
     type: 'success',
     icon: 'success',
-    backgroundColor: '#00A7B5',
+    backgroundColor: '#00dc5a',
     style: styleShadows,
     titleStyle: styleText,
   })

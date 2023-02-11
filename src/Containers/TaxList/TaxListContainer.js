@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import StepOneView from './StepOneView'
+import TaxListView from './TaxListView'
 
 import { getTaxes } from '@/Store/Taxes'
 
-const StepOneContainer = () => {
+const TaxListContainer = () => {
   const dispatch = useDispatch()
   const { inactiveTaxesList, activeTaxesList, loading } = useSelector(
     ({ taxes }) => taxes,
@@ -20,14 +20,14 @@ const StepOneContainer = () => {
   const itemsTab = [
     {
       id: 'activeTaxes',
-      title: t('stepOneScreen.labels.activeTaxes'),
+      title: t('taxesText.labels.activeTaxes'),
       action: () => {
         setActiveTab('activeTaxes')
       },
     },
     {
       id: 'inactiveTaxes',
-      title: t('stepOneScreen.labels.inactiveTaxes'),
+      title: t('taxesText.labels.inactiveTaxes'),
       action: () => {
         setActiveTab('inactiveTaxes')
       },
@@ -35,7 +35,7 @@ const StepOneContainer = () => {
   ]
 
   return (
-    <StepOneView
+    <TaxListView
       activeTab={activeTab}
       itemsTab={itemsTab}
       inactiveTaxesList={inactiveTaxesList}
@@ -45,4 +45,4 @@ const StepOneContainer = () => {
   )
 }
 
-export default StepOneContainer
+export default TaxListContainer

@@ -3,7 +3,7 @@ import { View, ScrollView } from 'react-native'
 import { useTheme } from '@/Hooks'
 import { Tabs, Box, ListItem, Loading } from '@/Components'
 
-const StepOneView = ({
+const TaxListView = ({
   activeTab,
   itemsTab,
   inactiveTaxesList,
@@ -35,4 +35,4 @@ const StepOneView = ({
   )
 }
 
-export default StepOneView
+export default TaxListView

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { AlertError } from '@/Services/Alerts'
+import { AlertError, AlertSuccess } from '@/Services/Alerts'
 import TaxesManager from '@/Services/TaxesManager'
 
 const initialState = {
@@ -12,6 +12,17 @@ export const getTaxes = createAsyncThunk('get_taxes', async () => {
   try {
     const response = await TaxesManager.getTaxesList()
 
+    return response
+  } catch (err) {
+    AlertError(err.message)
+    throw err
+  }
+})
+
+export const addTax = createAsyncThunk('add_tax', async data => {
+  try {
+    const response = await TaxesManager.addTax(data)
+    AlertSuccess('Your tax was added')
     return response
   } catch (err) {
     AlertError(err.message)
@@ -33,6 +44,26 @@ const slice = createSlice({
         state.loading = false
       }),
       builder.addCase(getTaxes.rejected, state => {
+        state.loading = false
+      }),
+      builder.addCase(addTax.pending, state => {
+        state.loading = true
+      }),
+      builder.addCase(addTax.fulfilled, (state, { payload }) => {
+        const newTax = {
+          name: payload.name,
+          year: payload.year,
+          id: payload.id,
+          active: payload.active,
+        }
+        if (payload.active) {
+          state.activeTaxesList = [...state.activeTaxesList, newTax]
+        } else {
+          state.inactiveTaxesList = [...state.inactiveTaxesList, newTax]
+        }
+        state.loading = false
+      }),
+      builder.addCase(addTax.rejected, state => {
         state.loading = false
       })
   },

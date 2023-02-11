@@ -45,5 +45,19 @@ class TaxesManager {
       }
     })
   }
+
+  addTax = async data => {
+    return new Promise((resolve, reject) => {
+      try {
+        const collectionRef = database().ref('taxes')
+
+        collectionRef.push(data)
+        resolve(data)
+      } catch (error) {
+        AlertError(error)
+        reject()
+      }
+    })
+  }
 }
 export default new TaxesManager()

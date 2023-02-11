@@ -1,0 +1,25 @@
+{
+"labels": {
+    "activeTaxes": "Impuestos Activos",
+    "inactiveTaxes": "Impuestos Inactivos" 
+    },
+"addForm":{
+    "name":"nombre del impuesto",
+    "year":"anio del impuesto",
+    "active":"Este impuesto esta activo?",
+    "addBtn":"Agregar"
+        },
+"errorMessages": {
+    "name": {
+        "required": "Nombre es un campo requerido"
+    },
+    "active": {
+        "required": "es un campo requerido"
+    },
+    "year": {
+        "required": "year es un campo requerido",
+        "negative": "El numero es negativo",
+        "higher": "Es mayor que 2023"
+    }
+}
+}
