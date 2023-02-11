@@ -1,6 +1,6 @@
 import React from 'react'
 import { ActionSheetIOS, Platform, TouchableOpacity, View } from 'react-native'
-//import Share from 'react-native-share'
+import Share from 'react-native-share'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@/Hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
