@@ -8,7 +8,7 @@ import {
   Loading,
   SearchInput,
   SelectInput,
-  Button,
+  DeleteModal,
   DeleteHeader,
 } from '@/Components'
 import { useTranslation } from 'react-i18next'
@@ -34,6 +34,10 @@ const TaxListWithFiltersView = ({
   selectAllTaxes,
   taxesSelecteds,
   selectTaxes,
+  setShowDeleteModal,
+  showDeleteModal,
+  dispatchDeletesActions,
+  deleteLoading,
 }) => {
   const { Common, Gutters, Layout, Fonts } = useTheme()
   const { t } = useTranslation()
@@ -49,8 +53,10 @@ const TaxListWithFiltersView = ({
       {deleteMode && (
         <DeleteHeader
           allSelecteds={list.length == taxesSelecteds.length}
+          taxesSelecteds={taxesSelecteds}
           deselectAllTaxes={deselectAllTaxes}
           selectAllTaxes={selectAllTaxes}
+          setShowDeleteModal={setShowDeleteModal}
         />
       )}
       <View style={[Gutters.regularPadding]}>
@@ -121,6 +127,12 @@ const TaxListWithFiltersView = ({
           </Box>
         </ScrollView>
       </View>
+      <DeleteModal
+        showDeleteModal={showDeleteModal}
+        setShowDeleteModal={setShowDeleteModal}
+        dispatchDeletesActions={dispatchDeletesActions}
+        deleteLoading={deleteLoading}
+      />
     </View>
   )
 }

@@ -25,7 +25,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
     let year = parseInt(values.year)
     if (year <= 2023 && year >= 1800) {
       addTaxAction(values)
-      reset()
+      //reset()
     } else {
       setError('year', { message: 'Year must be between 1800 and 2023' })
     }

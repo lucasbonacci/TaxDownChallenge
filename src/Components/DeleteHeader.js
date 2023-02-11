@@ -8,13 +8,25 @@ import { useTheme } from '@/Hooks'
 
 import { setDeleteMode } from '@/Store/Taxes'
 
-const DeleteHeader = ({ allSelecteds, deselectAllTaxes, selectAllTaxes }) => {
+const DeleteHeader = ({
+  allSelecteds,
+  deselectAllTaxes,
+  selectAllTaxes,
+  setShowDeleteModal,
+  taxesSelecteds,
+}) => {
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const { t } = useTranslation()
   const dispatch = useDispatch()
 
   const desactiveDeleteMode = () => {
     dispatch(setDeleteMode(false))
+  }
+
+  const openModal = () => {
+    if (taxesSelecteds.length) {
+      setShowDeleteModal(true)
+    }
   }
 
   return (
@@ -33,7 +45,6 @@ const DeleteHeader = ({ allSelecteds, deselectAllTaxes, selectAllTaxes }) => {
             shadowOpacity: 0.3,
             shadowRadius: 3,
             elevation: 5,
-            //overflow: 'hidden',
           },
         ]}
       >
@@ -50,7 +61,7 @@ const DeleteHeader = ({ allSelecteds, deselectAllTaxes, selectAllTaxes }) => {
                 : t('taxesText.deleteMode.selectAllBtnLabel')}
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={openModal}>
             <Text style={[Fonts.headline, Gutters.regularHMargin]}>
               {t('taxesText.deleteMode.deleteBtnLabel')}
             </Text>

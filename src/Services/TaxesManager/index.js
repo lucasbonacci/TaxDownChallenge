@@ -57,11 +57,6 @@ class TaxesManager {
               )
             }
 
-            //const activeTaxes = processedList.filter(tax => tax.active === true)
-            //const inactiveTaxes = processedList.filter(
-            //  tax => tax.active === false,
-            // )
-
             resolve({
               list: processedList,
             })

@@ -15,6 +15,8 @@ const TaxListWithFiltersContainer = () => {
   const [selectedValueAge, setSelectedValueAge] = useState('')
   const [search, setSearch] = useState('')
   const [taxesSelecteds, setTaxesSelecteds] = useState([])
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [deleteLoading, setDeleteLoading] = useState(false)
 
   const searchDebounce = useDebounce(search, 500)
   const selectedYearDebounce = useDebounce(selectedValueYear, 500)
@@ -42,8 +44,18 @@ const TaxListWithFiltersContainer = () => {
     selectedYearDebounce,
   ])
 
-  const deleteTaxAction = id => {
-    dispatch(deleteTax({ id }))
+  const dispatchDeletesActions = async () => {
+    setDeleteLoading(true)
+
+    const deleteOneTax = async id => {
+      return await dispatch(deleteTax({ id }))
+    }
+
+    await Promise.all(taxesSelecteds.map(deleteOneTax))
+    setDeleteLoading(false)
+    setShowDeleteModal(false)
+    setTaxesSelecteds([])
+    setDeleteMode(false)
   }
 
   const selectAllTaxes = () => {
@@ -134,12 +146,15 @@ const TaxListWithFiltersContainer = () => {
       ageOptions={ageOptions}
       setSearch={setSearch}
       search={setSearch}
-      deleteTaxAction={deleteTaxAction}
       deleteMode={deleteMode}
       deselectAllTaxes={deselectAllTaxes}
       selectAllTaxes={selectAllTaxes}
       taxesSelecteds={taxesSelecteds}
       selectTaxes={selectTaxes}
+      setShowDeleteModal={setShowDeleteModal}
+      showDeleteModal={showDeleteModal}
+      deleteLoading={deleteLoading}
+      dispatchDeletesActions={dispatchDeletesActions}
     />
   )
 }

@@ -74,7 +74,13 @@ const slice = createSlice({
       }),
       builder.addCase(addTax.rejected, state => {
         state.loading = false
-      })
+      }),
+      builder.addCase(deleteTax.pending, state => {}),
+      builder.addCase(deleteTax.fulfilled, (state, { meta: { arg } }) => {
+        const newList = state.list.filter(item => item.id !== arg.id)
+        state.list = newList
+      }),
+      builder.addCase(deleteTax.rejected, state => {})
   },
 })
 

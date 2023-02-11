@@ -33,7 +33,12 @@
     "selectAllBtnLabel": "Select All",
     "deselectAllBtnLabel": "Deselect All",
     "deleteBtnLabel": "Delete",
-    "headerDeleteMode": "{{checkedItemsCount}} selected"
+    "headerDeleteMode": "{{checkedItemsCount}} selected",
+    "modal":{
+        "header": "Are you sure you want to do this action?" ,
+        "cancelBtn": "Cancel",
+        "confirmBtn": "Confirm"
+    }
   }
 }
 
