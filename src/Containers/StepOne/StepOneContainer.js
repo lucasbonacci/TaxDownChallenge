@@ -8,7 +8,7 @@ import { getTaxes } from '@/Store/Taxes'
 const StepOneContainer = () => {
   const dispatch = useDispatch()
   const { inactiveTaxes, activeTaxes } = useSelector(({ taxes }) => taxes)
-  const [activeTab, setActiveTab] = useState('ActiveTaxes')
+  const [activeTab, setActiveTab] = useState('activeTaxes')
   const { t } = useTranslation()
 
   useEffect(() => {

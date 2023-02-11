@@ -2,6 +2,7 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ExampleContainer, StepOneContainer } from '@/Containers'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { useTranslation } from 'react-i18next'
 import {
   faCircle2,
   faCircle3,
@@ -14,16 +15,17 @@ const Tab = createBottomTabNavigator()
 // @refresh reset
 const MainNavigator = () => {
   const { Fonts, Colors, Layout, Gutters } = useTheme()
-
+  const { t } = useTranslation()
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Dashboard1"
+        name="secondStep"
         component={StepOneContainer}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           gestureEnabled: false,
+          title: t('headerTitles.secondStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faCircle2}
@@ -34,12 +36,13 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Dashboard2"
+        name="thirdStep"
         component={ExampleContainer}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           gestureEnabled: false,
+          title: t('headerTitles.thirdStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faCircle3}
@@ -50,12 +53,13 @@ const MainNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Dashboard3"
+        name="fourthStep"
         component={ExampleContainer}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarShowLabel: false,
           gestureEnabled: false,
+          title: t('headerTitles.fourthStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faCircle4}
