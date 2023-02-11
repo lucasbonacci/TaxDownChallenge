@@ -1,9 +1,15 @@
 import React from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { useTheme } from '@/Hooks'
-import { Tabs, Box, ListItem } from '@/Components'
+import { Tabs, Box, ListItem, Loading } from '@/Components'
 
-const StepOneView = ({ activeTab, itemsTab, inactiveTaxes, activeTaxes }) => {
+const StepOneView = ({
+  activeTab,
+  itemsTab,
+  inactiveTaxesList,
+  activeTaxesList,
+  loading,
+}) => {
   const { Common, Gutters, Layout, Colors } = useTheme()
 
   return (
@@ -15,9 +21,15 @@ const StepOneView = ({ activeTab, itemsTab, inactiveTaxes, activeTaxes }) => {
         <Tabs activeId={activeTab} items={itemsTab} />
       </View>
       <Box>
-        <ListItem
-          items={activeTab === 'activeTaxes' ? activeTaxes : inactiveTaxes}
-        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <ListItem
+            items={
+              activeTab === 'activeTaxes' ? activeTaxesList : inactiveTaxesList
+            }
+          />
+        )}
       </Box>
     </ScrollView>
   )

@@ -1,13 +1,10 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ExampleContainer, StepOneContainer } from '@/Containers'
+import { ShareButton } from '@/Components'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useTranslation } from 'react-i18next'
-import {
-  faCircle2,
-  faCircle3,
-  faCircle4,
-} from '@fortawesome/pro-solid-svg-icons'
+import { fa2, fa3, fa4 } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/Hooks'
 
 const Tab = createBottomTabNavigator()
@@ -26,9 +23,12 @@ const MainNavigator = () => {
           tabBarShowLabel: false,
           gestureEnabled: false,
           title: t('headerTitles.secondStep'),
+          headerRight: () => (
+            <ShareButton message={t('shareMessages.inviteToKnowTheApp')} />
+          ),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
-              icon={faCircle2}
+              icon={fa2}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
@@ -45,7 +45,7 @@ const MainNavigator = () => {
           title: t('headerTitles.thirdStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
-              icon={faCircle3}
+              icon={fa3}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
@@ -62,7 +62,7 @@ const MainNavigator = () => {
           title: t('headerTitles.fourthStep'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
-              icon={faCircle4}
+              icon={fa4}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />

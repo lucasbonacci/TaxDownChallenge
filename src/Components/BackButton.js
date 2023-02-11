@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { useTheme } from '@/Hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faArrowLeft } from '@fortawesome/pro-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const BackButton = ({ navigation }) => {
   const { Gutters, Colors, Layout } = useTheme()

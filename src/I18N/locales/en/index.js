@@ -6,4 +6,5 @@ export default {
   loginScreen: require('./loginScreen.json'),
   stepOneScreen: require('./stepOneScreen.json'),
   headerTitles: require('./headerTitles.json'),
+  shareMessages: require('./shareMessages.json'),
 }

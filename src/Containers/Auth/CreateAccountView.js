@@ -12,7 +12,7 @@ import { Button, Input, PasswordInput } from '@/Components'
 import { EMAIL_REG_EXP, STRONG_PASSWORD_REG_EXP } from '@/Constants'
 import { useForm, Controller } from 'react-hook-form'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCircle } from '@fortawesome/pro-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/Hooks'
 import { useTranslation } from 'react-i18next'
 
