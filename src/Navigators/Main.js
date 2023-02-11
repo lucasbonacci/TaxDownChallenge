@@ -1,10 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import {
-  TaxListWithFiltersContainer,
-  TaxListContainer,
-  AddTaxContainer,
-} from '@/Containers'
+import { TaxListContainer, AddTaxContainer } from '@/Containers'
 import { ShareButton, DeleteButton } from '@/Components'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useTranslation } from 'react-i18next'
@@ -15,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/Hooks'
 import { useSelector } from 'react-redux'
+import { SVG } from '@/Assets/svg/index.js'
 
 const Tab = createBottomTabNavigator()
 
@@ -26,38 +23,20 @@ const MainNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="fourthStep"
-        component={TaxListWithFiltersContainer}
+        name="taxList"
+        component={TaxListContainer}
         options={{
           headerShown: !deleteMode,
           tabBarShowLabel: false,
           gestureEnabled: false,
-          title: t('headerTitles.fourthStep'),
+          title: 'TaxDown',
+          headerLeft: () => (
+            <ShareButton message={t('shareMessages.inviteToKnowTheApp')} />
+          ),
           headerRight: () => <DeleteButton />,
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              size={size}
-              color={focused ? Colors.primary : Colors.lcGray}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="taxList"
-        component={TaxListContainer}
-        options={{
-          headerShown: true,
-          tabBarShowLabel: false,
-          gestureEnabled: false,
-          title: t('headerTitles.secondStep'),
-          headerRight: () => (
-            <ShareButton message={t('shareMessages.inviteToKnowTheApp')} />
-          ),
-          tabBarIcon: ({ focused, size }) => (
-            <FontAwesomeIcon
-              icon={faClipboardList}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
