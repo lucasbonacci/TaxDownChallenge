@@ -4,3 +4,4 @@ export { default as CreateAccountContainer } from './Auth/CreateAccountContainer
 export { default as LoadingView } from './LoadingView/LoadingView'
 export { default as TaxListContainer } from './TaxList/TaxListContainer'
 export { default as AddTaxContainer } from './AddTax/AddTaxContainer'
+export { default as TaxListWithFiltersContainer } from './TaxListWithFilters/TaxListWithFiltersContainer'

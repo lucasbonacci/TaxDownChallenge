@@ -4,8 +4,9 @@ import { AlertError } from '@/Services/Alerts'
 class TaxesManager {
   constructor() {}
 
-  getTaxesList = () => {
+  getTaxesList = data => {
     return new Promise((resolve, reject) => {
+      console.log(data)
       try {
         let listRef = database().ref(`taxes`)
 
@@ -14,7 +15,7 @@ class TaxesManager {
           listSnap => {
             const list = listSnap.val()
 
-            const processedList = []
+            let processedList = []
 
             // process events object to an array
             for (const key in list) {
@@ -24,14 +25,46 @@ class TaxesManager {
               })
             }
 
-            const activeTaxes = processedList.filter(tax => tax.active === true)
-            const inactiveTaxes = processedList.filter(
-              tax => tax.active === false,
-            )
+            // Filtrado por name
+            if (data.searchDebounce) {
+              processedList = processedList.filter(tax =>
+                tax.name
+                  .toLowerCase()
+                  .includes(data.searchDebounce.toLowerCase()),
+              )
+            }
+
+            // Filtrado por age
+            if (data.selectedAgeDebounce) {
+              processedList = processedList.filter(
+                tax => tax.age === data.selectedAgeDebounce,
+              )
+            }
+
+            // Filtrado por year
+            if (data.selectedYearDebounce) {
+              processedList = processedList.filter(tax =>
+                tax.year
+                  .toLowerCase()
+                  .includes(data.selectedYearDebounce.toLowerCase()),
+              )
+            }
+
+            // Filtrado por active
+            if (data.statusTaxesDebounce !== 'allTaxes') {
+              processedList = processedList.filter(
+                tax =>
+                  tax.active === (data.statusTaxesDebounce === 'activeTaxes'),
+              )
+            }
+
+            //const activeTaxes = processedList.filter(tax => tax.active === true)
+            //const inactiveTaxes = processedList.filter(
+            //  tax => tax.active === false,
+            // )
 
             resolve({
-              activeTaxes,
-              inactiveTaxes,
+              list: processedList,
             })
           },
           error => {

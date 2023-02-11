@@ -1,7 +1,12 @@
 {
 "labels": {
     "activeTaxes": "Active Taxes",
-    "inactiveTaxes": "Inactive Taxes" 
+    "inactiveTaxes": "Inactive Taxes" ,
+    "allTaxes":"All Taxes",
+    "byYear":"Year",
+    "byAge":"Age",
+    "none":"None",
+    "noFounded": "No tax found"
     },
 "addForm":{
     "name":"tax name",

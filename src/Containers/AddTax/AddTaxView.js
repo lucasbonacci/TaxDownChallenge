@@ -23,7 +23,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
 
   const submit = async values => {
     let year = parseInt(values.year)
-    if (year < 2023 && year >= 1800) {
+    if (year <= 2023 && year >= 1800) {
       addTaxAction(values)
       reset()
     } else {
@@ -95,7 +95,6 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
               required: t('taxesText.errorMessages.year.required'),
             }}
           />
-          {console.log(errors)}
           {errors.year && (
             <Text
               style={[

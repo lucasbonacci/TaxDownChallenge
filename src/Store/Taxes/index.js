@@ -8,9 +8,9 @@ const initialState = {
   loading: false,
 }
 
-export const getTaxes = createAsyncThunk('get_taxes', async () => {
+export const getTaxes = createAsyncThunk('get_taxes', async data => {
   try {
-    const response = await TaxesManager.getTaxesList()
+    const response = await TaxesManager.getTaxesList(data)
 
     return response
   } catch (err) {
@@ -39,8 +39,7 @@ const slice = createSlice({
       state.loading = true
     }),
       builder.addCase(getTaxes.fulfilled, (state, { payload }) => {
-        state.activeTaxesList = payload.activeTaxes
-        state.inactiveTaxesList = payload.inactiveTaxes
+        state.list = payload.list
         state.loading = false
       }),
       builder.addCase(getTaxes.rejected, state => {

@@ -13,13 +13,16 @@ const TaxListView = ({ activeTab, itemsTab, list, loading }) => {
       <View style={[Gutters.regularVPadding]}>
         <Tabs activeId={activeTab} items={itemsTab} />
       </View>
-
       <ScrollView>
         <Box>
           {loading ? (
             <Loading />
+          ) : list.length === 0 ? (
+            <Text style={[Fonts.headline, Fonts.textCenter]}>
+              {t('taxesText.labels.noFounded')}
+            </Text>
           ) : (
-            list.map((item, index) => {
+            list?.map((item, index) => {
               return (
                 <View key={index} index={index}>
                   <ListItem item={item} lastItem={index === list.length - 1} />

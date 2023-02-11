@@ -1,7 +1,12 @@
 {
 "labels": {
     "activeTaxes": "Impuestos Activos",
-    "inactiveTaxes": "Impuestos Inactivos" 
+    "inactiveTaxes": "Impuestos Inactivos" ,
+    "allTaxes":"Todos",
+    "byYear":"Ano",
+    "byAge":"Edad",
+    "none":"None",
+    "noFounded": "No se encontro ningun impuesto"
     },
 "addForm":{
     "name":"nombre del impuesto",

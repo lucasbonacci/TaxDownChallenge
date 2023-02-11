@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import TaxListView from './TaxListView'
-
+import useDebounce from '@/Hooks/useDebounce'
 import { getTaxes } from '@/Store/Taxes'
 
 const TaxListContainer = () => {
   const dispatch = useDispatch()
-  const { inactiveTaxesList, activeTaxesList, loading } = useSelector(
-    ({ taxes }) => taxes,
-  )
+  const { list, loading } = useSelector(({ taxes }) => taxes)
   const [activeTab, setActiveTab] = useState('activeTaxes')
+  const statusTaxesDebounce = useDebounce(activeTab, 200)
   const { t } = useTranslation()
 
   useEffect(() => {
-    dispatch(getTaxes('taxes'))
-  }, [])
+    dispatch(getTaxes({ statusTaxesDebounce }))
+  }, [statusTaxesDebounce])
 
   const itemsTab = [
     {
@@ -38,7 +37,7 @@ const TaxListContainer = () => {
     <TaxListView
       activeTab={activeTab}
       itemsTab={itemsTab}
-      list={activeTab === 'activeTaxes' ? activeTaxesList : inactiveTaxesList}
+      list={list}
       loading={loading}
     />
   )

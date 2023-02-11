@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import AddTaxView from './AddTaxView'
 import { addTax } from '@/Store/Taxes'
-import { generateRandomId } from '@/Helpers/generateRandomId'
 
 const AddTaxContainer = () => {
   const dispatch = useDispatch()
@@ -12,12 +11,9 @@ const AddTaxContainer = () => {
   const { t } = useTranslation()
 
   const addTaxAction = values => {
-    const id = generateRandomId()
-
     const tax = {
       name: values.name,
       year: values.year,
-      id,
       active: isTaxActive === 'true' ? true : false,
     }
 

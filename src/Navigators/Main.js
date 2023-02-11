@@ -1,14 +1,18 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
-  ExampleContainer,
+  TaxListWithFiltersContainer,
   TaxListContainer,
   AddTaxContainer,
 } from '@/Containers'
 import { ShareButton } from '@/Components'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useTranslation } from 'react-i18next'
-import { faClipboardList, faPlus, fa4 } from '@fortawesome/free-solid-svg-icons'
+import {
+  faClipboardList,
+  faPlus,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/Hooks'
 
 const Tab = createBottomTabNavigator()
@@ -19,6 +23,24 @@ const MainNavigator = () => {
   const { t } = useTranslation()
   return (
     <Tab.Navigator>
+      <Tab.Screen
+        name="fourthStep"
+        component={TaxListWithFiltersContainer}
+        options={{
+          headerShown: true,
+          tabBarShowLabel: false,
+          gestureEnabled: false,
+          title: t('headerTitles.fourthStep'),
+          tabBarIcon: ({ focused, size }) => (
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              size={size}
+              color={focused ? Colors.primary : Colors.lcGray}
+            />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="taxList"
         component={TaxListContainer}
@@ -51,24 +73,6 @@ const MainNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faPlus}
-              size={size}
-              color={focused ? Colors.primary : Colors.lcGray}
-            />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="fourthStep"
-        component={ExampleContainer}
-        options={{
-          headerShown: true,
-          tabBarShowLabel: false,
-          gestureEnabled: false,
-          title: t('headerTitles.fourthStep'),
-          tabBarIcon: ({ focused, size }) => (
-            <FontAwesomeIcon
-              icon={fa4}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
