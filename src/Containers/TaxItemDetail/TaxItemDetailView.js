@@ -26,6 +26,11 @@ const TaxItemDetailView = ({
   const { Common, Gutters, Layout, Colors, Fonts } = useTheme()
   const { t } = useTranslation()
 
+  const onSubmit = values => {
+    editTaxAction(values)
+    setImagePath(null)
+  }
+
   const renderItem = () => {
     return Object.keys(item).map((key, index) => {
       return (
@@ -62,6 +67,7 @@ const TaxItemDetailView = ({
             editLoading={editLoading}
             setImagePath={setImagePath}
             form={form}
+            onSubmit={onSubmit}
           />
         )}
       </ScrollView>

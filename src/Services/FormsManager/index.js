@@ -14,8 +14,20 @@ class FormsManager {
           listSnap => {
             let form = listSnap.val()
 
+            console.log(form)
+
             form = Object.entries(form.inputFields)
             form = form.map(([id, value]) => ({ id, ...value }))
+
+            form = form.sort((a, b) => {
+              if (a.id === 'picture') {
+                return 1
+              }
+              if (b.id === 'picture') {
+                return -1
+              }
+              return 0
+            })
 
             resolve({
               form,
