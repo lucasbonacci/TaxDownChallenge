@@ -10,6 +10,7 @@ const DynamicForm = ({
   imagePath,
   editLoading,
   editTaxAction,
+  form,
 }) => {
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const { t } = useTranslation()

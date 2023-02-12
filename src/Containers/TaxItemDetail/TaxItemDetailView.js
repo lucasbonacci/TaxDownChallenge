@@ -10,7 +10,6 @@ import {
 import { useTheme } from '@/Hooks'
 import { Box, Loading, DynamicForm } from '@/Components'
 import { useTranslation } from 'react-i18next'
-import { useForm, Controller } from 'react-hook-form'
 
 const { height } = Dimensions.get('window')
 
@@ -21,6 +20,8 @@ const TaxItemDetailView = ({
   imagePath,
   editLoading,
   setImagePath,
+  form,
+  loadingForm,
 }) => {
   const { Common, Gutters, Layout, Colors, Fonts } = useTheme()
   const { t } = useTranslation()
@@ -52,12 +53,17 @@ const TaxItemDetailView = ({
             {t('taxesText.postForm.header')}
           </Text>
         </View>
-        <DynamicForm
-          editTaxAction={editTaxAction}
-          imagePath={imagePath}
-          editLoading={editLoading}
-          setImagePath={setImagePath}
-        />
+        {loadingForm ? (
+          <Loading size="large" />
+        ) : (
+          <DynamicForm
+            editTaxAction={editTaxAction}
+            imagePath={imagePath}
+            editLoading={editLoading}
+            setImagePath={setImagePath}
+            form={form}
+          />
+        )}
       </ScrollView>
     </KeyboardAvoidingView>
   )
