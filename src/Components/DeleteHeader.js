@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -73,3 +74,19 @@ const DeleteHeader = ({
 }
 
 export default DeleteHeader
+
+DeleteHeader.propTypes = {
+  allSelecteds: PropTypes.number,
+  deselectAllItems: PropTypes.func,
+  selectAllItems: PropTypes.func,
+  setShowDeleteModal: PropTypes.func,
+  itemsSelecteds: PropTypes.array,
+}
+
+DeleteHeader.defaultProps = {
+  allSelecteds: 0,
+  deselectAllItems: () => {},
+  selectAllItems: () => {},
+  setShowDeleteModal: () => {},
+  itemsSelecteds: [],
+}

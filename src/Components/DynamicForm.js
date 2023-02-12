@@ -58,7 +58,7 @@ const DynamicForm = ({
                 )}
                 name={item.id}
                 rules={{
-                  required: t('required field'),
+                  required: 'required field',
                 }}
               />
               {errors.name && (

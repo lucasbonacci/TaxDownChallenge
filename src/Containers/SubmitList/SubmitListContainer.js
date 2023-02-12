@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import SubmitListView from './SubmitListView'
 import useDebounce from '@/Hooks/useDebounce'
-import { generateAge } from '@/Helpers/generateYear'
+import { generateAge } from '@/Helpers/generateAge'
 import {
   getTaxSubmission,
   deleteSubmission,
@@ -26,8 +26,6 @@ const SubmitListContainer = ({ route }) => {
   const selectedAgeDebounce = useDebounce(selectedValueAge, 500)
 
   const { t } = useTranslation()
-
-  console.log(submissionList)
 
   const ageOptions = generateAge()
 
