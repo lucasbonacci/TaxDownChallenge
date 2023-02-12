@@ -1,5 +1,5 @@
 {
-"secondStep": "Segundo Paso",
-"thirdStep": "Tecer Paso",
-"fourthStep":"Cuarto Paso"
-}
+    "Dashboard": "Dashboard",
+    "addTax": "Agregar Impuesto",
+    "Logout":"Salir"
+}  

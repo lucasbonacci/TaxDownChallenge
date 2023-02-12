@@ -1,0 +1,29 @@
+{
+    "addForm":{
+    "name":"tax name",
+    "year":"tax year",
+    "active":"Is this tax active?",
+    "true":"true",
+    "false":"false",
+    "addBtn":"Add"
+    },
+"errorMessages": {
+    "name": {
+        "required": "name is required"
+    },
+    "active": {
+        "required": "is required"
+    },
+    "age": {
+        "required": "is required"
+    },
+    "surname": {
+        "required": "is required"
+    },
+    "year": {
+        "required": "year is required",
+        "negative": "the number is negative",
+        "higher": "the number is higher than 2023"
+    }
+}
+}

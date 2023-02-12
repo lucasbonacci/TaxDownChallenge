@@ -19,7 +19,7 @@ const LogoutView = ({ logoutAction, loading }) => {
         <SVG.Logo height={150} width={300} fillColor="none" />
       </View>
       <Button
-        title="sing out"
+        title={t('logoutScreen.logout')}
         onPress={logoutAction}
         loading={loading}
         disabled={loading}

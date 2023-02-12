@@ -39,7 +39,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
               <Input
                 onChangeText={onChange}
                 onBlur={onBlur}
-                label={t('taxesText.addForm.name')}
+                label={t('addTaxScreen.addForm.name')}
                 editable={true}
                 keyboardType={'default'}
                 ColorLabel={Colors.gray3}
@@ -53,7 +53,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
             )}
             name="name"
             rules={{
-              required: t('taxesText.errorMessages.name.required'),
+              required: t('addTaxScreen.errorMessages.name.required'),
             }}
           />
           {errors.name && (
@@ -75,7 +75,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
               <Input
                 onChangeText={value => onChange(value.replace(/\s+/g, ''))}
                 onBlur={onBlur}
-                label={t('taxesText.addForm.year')}
+                label={t('addTaxScreen.addForm.year')}
                 editable={true}
                 keyboardType={'numeric'}
                 ColorLabel={Colors.gray3}
@@ -90,7 +90,7 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
             )}
             name="year"
             rules={{
-              required: t('taxesText.errorMessages.year.required'),
+              required: t('addTaxScreen.errorMessages.year.required'),
             }}
           />
           {errors.year && (
@@ -107,14 +107,14 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
         </View>
         <View>
           <Text style={[Gutters.smallVPadding, { color: Colors.gray3 }]}>
-            {t('taxesText.addForm.active')}
+            {t('addTaxScreen.addForm.active')}
           </Text>
           <Tabs activeId={isTaxActive} items={itemsTab} />
         </View>
       </ScrollView>
       <View style={[Gutters.regularMargin]}>
         <Button
-          title={t('taxesText.addForm.addBtn')}
+          title={t('addTaxScreen.addForm.addBtn')}
           onPress={handleSubmit(submit)}
           loading={loading}
           disabled={loading}

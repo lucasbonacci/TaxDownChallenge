@@ -33,7 +33,7 @@ const MainNavigator = () => {
           headerShown: !deleteMode,
           tabBarShowLabel: false,
           gestureEnabled: false,
-          title: 'TaxDown',
+          title: t('headerTitles.Dashboard'),
           headerLeft: () => (
             <ShareButton message={t('shareMessages.inviteToKnowTheApp')} />
           ),
@@ -55,7 +55,7 @@ const MainNavigator = () => {
           headerShown: true,
           tabBarShowLabel: false,
           gestureEnabled: false,
-          title: t('headerTitles.thirdStep'),
+          title: t('headerTitles.addTax'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faPlus}
@@ -73,7 +73,7 @@ const MainNavigator = () => {
           headerShown: true,
           tabBarShowLabel: false,
           gestureEnabled: false,
-          title: t('headerTitles.thirdStep'),
+          title: t('headerTitles.Logout'),
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faRightFromBracket}

@@ -57,13 +57,13 @@ const DeleteHeader = ({
           >
             <Text style={[Fonts.headline]}>
               {allSelecteds
-                ? t('taxesText.deleteMode.deselectAllBtnLabel')
-                : t('taxesText.deleteMode.selectAllBtnLabel')}
+                ? t('deleteHeader.deleteMode.deselectAllBtnLabel')
+                : t('deleteHeader.deleteMode.selectAllBtnLabel')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={openModal}>
             <Text style={[Fonts.headline, Gutters.regularHMargin]}>
-              {t('taxesText.deleteMode.deleteBtnLabel')}
+              {t('deleteHeader.deleteMode.deleteBtnLabel')}
             </Text>
           </TouchableOpacity>
         </View>

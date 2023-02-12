@@ -8,31 +8,6 @@
     "none":"None",
     "noFounded": "No se encontro ningun impuesto"
     },
-"addForm":{
-    "name":"nombre del impuesto",
-    "year":"anio del impuesto",
-    "active":"Este impuesto esta activo?",
-    "addBtn":"Agregar"
-        },
-        "errorMessages": {
-            "name": {
-                "required": "name is required"
-            },
-            "active": {
-                "required": "is required"
-            },
-            "age": {
-                "required": "is required"
-            },
-            "surname": {
-                "required": "is required"
-            },
-            "year": {
-                "required": "year is required",
-                "negative": "the number is negative",
-                "higher": "the number is higher than 2023"
-            }
-        },
 "deleteMode": {
     "selectAllBtnLabel": "Select All",
     "deselectAllBtnLabel": "Deselect All",
