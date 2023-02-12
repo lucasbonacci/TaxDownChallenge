@@ -11,17 +11,18 @@ const ListItem = ({
   item,
   lastItem,
   deleteMode,
-  selectTaxes,
-  taxesSelecteds,
+  selectItem,
+  itemsSelecteds,
 }) => {
-  const { Layout, Gutters, Colors } = useTheme()
+  const { Layout, Gutters, Colors, Fonts } = useTheme()
+  const textStyle = [Gutters.smallHPadding, Fonts.body]
 
   return (
     <TouchableOpacity
       onPress={
         deleteMode
-          ? () => selectTaxes(item.id)
-          : () => navigate('taxDetail', { id: item.id })
+          ? () => selectItem(item.id)
+          : () => navigate('taxDetail', { item })
       }
       style={[
         Layout.row,
@@ -48,14 +49,23 @@ const ListItem = ({
               <FontAwesomeIcon icon={faSquare} size={23} color={Colors.gray3} />
             }
             containerStyle={{ margin: 0, padding: 0 }}
-            checked={taxesSelecteds?.includes(item.id)}
+            checked={itemsSelecteds?.includes(item.id)}
             disabled={true}
           />
         )}
         <Text>{item.name}</Text>
       </View>
-      <View style={[Layout.row, Layout.justifyContentBetween]}>
-        <Text>{item.year}</Text>
+      <View
+        style={[
+          Layout.row,
+          Layout.justifyContentBetween,
+          Layout.alignItemsCenter,
+        ]}
+      >
+        {item.year && <Text style={textStyle}>{item.year}</Text>}
+        {item.surname && <Text style={textStyle}>{item.surname}</Text>}
+        {item.age && <Text style={textStyle}>{item.age}</Text>}
+        {item.image && <Text style={textStyle}>{item.image.slice(0, 15)}</Text>}
       </View>
     </TouchableOpacity>
   )

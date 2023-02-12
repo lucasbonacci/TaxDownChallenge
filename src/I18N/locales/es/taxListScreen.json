@@ -7,31 +7,7 @@
     "byAge":"Edad",
     "none":"None",
     "noFounded": "No se encontro ningun impuesto"
-    },
-"deleteMode": {
-    "selectAllBtnLabel": "Select All",
-    "deselectAllBtnLabel": "Deselect All",
-    "deleteBtnLabel": "Delete",
-    "headerDeleteMode": "{{checkedItemsCount}} selected",
-    "modal":{
-        "header": "Are you sure you want to do this action?" ,
-        "cancelBtn": "Cancel",
-        "confirmBtn": "Confirm"
     }
-  },
-  "postForm":{
-    "label":{
-      "age":"Age",
-      "surname":"Surname",
-      "name":"Name"
-    },
-    "placeholder":{
-      "age":"Your age",
-      "surname":"Your last name",
-      "name":"Your first name"
-    },
-    "addPhoto": "Add Photo",
-    "header":"Agregar Data",
-    "submitBtn":"Enviar"
-}
-}
+  }
+
+ 

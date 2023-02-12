@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import TaxListView from './TaxListView'
 import useDebounce from '@/Hooks/useDebounce'
-import { generateYear, generateAge } from '@/Helpers/generateYear'
+import { generateYear } from '@/Helpers/generateYear'
 import { getTaxes, deleteTax, setDeleteMode } from '@/Store/Taxes'
 import database from '@react-native-firebase/database'
 
@@ -13,7 +13,6 @@ const TaxListContainer = () => {
   const [activeTab, setActiveTab] = useState('allTaxes')
   const [activeTabSelect, setActiveTabSelect] = useState('none')
   const [selectedValueYear, setSelectedValueYear] = useState('')
-  const [selectedValueAge, setSelectedValueAge] = useState('')
   const [search, setSearch] = useState('')
   const [taxesSelecteds, setTaxesSelecteds] = useState([])
   const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -21,29 +20,21 @@ const TaxListContainer = () => {
 
   const searchDebounce = useDebounce(search, 500)
   const selectedYearDebounce = useDebounce(selectedValueYear, 500)
-  const selectedAgeDebounce = useDebounce(selectedValueAge, 500)
   const statusTaxesDebounce = useDebounce(activeTab, 500)
 
   const { t } = useTranslation()
 
   const yearOptions = generateYear()
-  const ageOptions = generateAge()
 
   useEffect(() => {
     dispatchGetTaxesList()
-  }, [
-    searchDebounce,
-    statusTaxesDebounce,
-    selectedAgeDebounce,
-    selectedYearDebounce,
-  ])
+  }, [searchDebounce, statusTaxesDebounce, selectedYearDebounce])
 
   const dispatchGetTaxesList = () => {
     dispatch(
       getTaxes({
         searchDebounce,
         statusTaxesDebounce,
-        selectedAgeDebounce,
         selectedYearDebounce,
       }),
     )
@@ -73,7 +64,7 @@ const TaxListContainer = () => {
     setDeleteLoading(false)
     setShowDeleteModal(false)
     setTaxesSelecteds([])
-    setDeleteMode(false)
+    dispatch(setDeleteMode(false))
   }
 
   const selectAllTaxes = () => {
@@ -122,19 +113,9 @@ const TaxListContainer = () => {
 
   const itemsTabSelects = [
     {
-      id: 'age',
-      title: t('taxListScreen.labels.byAge'),
-      action: () => {
-        setSelectedValueAge('0')
-        setSelectedValueYear('')
-        setActiveTabSelect('age')
-      },
-    },
-    {
       id: 'year',
       title: t('taxListScreen.labels.byYear'),
       action: () => {
-        setSelectedValueAge('')
         setSelectedValueYear('1800')
         setActiveTabSelect('year')
       },
@@ -144,7 +125,6 @@ const TaxListContainer = () => {
       title: t('taxListScreen.labels.none'),
       action: () => {
         setSelectedValueYear('')
-        setSelectedValueAge('')
         setActiveTabSelect('none')
       },
     },
@@ -160,10 +140,7 @@ const TaxListContainer = () => {
       loading={loading}
       selectedValueYear={selectedValueYear}
       setSelectedValueYear={setSelectedValueYear}
-      selectedValueAge={selectedValueAge}
-      setSelectedValueAge={setSelectedValueAge}
       yearOptions={yearOptions}
-      ageOptions={ageOptions}
       setSearch={setSearch}
       search={setSearch}
       deleteMode={deleteMode}

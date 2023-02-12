@@ -1,5 +1,6 @@
 {
     "Dashboard": "Dashboard",
     "addTax": "Agregar Impuesto",
-    "Logout":"Salir"
+    "Logout":"Salir",
+    "SubmitList":"Enviar"
 }  

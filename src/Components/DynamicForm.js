@@ -9,7 +9,6 @@ const DynamicForm = ({
   setImagePath,
   imagePath,
   editLoading,
-  editTaxAction,
   onSubmit,
   form,
 }) => {
@@ -34,8 +33,6 @@ const DynamicForm = ({
   return (
     <View>
       {form.map((item, index) => {
-        const message = `taxesText.errorMessages.${item.id}`
-        console.log(message)
         if (item.type === 'text' || item.type === 'number') {
           return (
             <View key={index} style={[Gutters.smallVPadding, Layout.fullWidth]}>
@@ -61,7 +58,7 @@ const DynamicForm = ({
                 )}
                 name={item.id}
                 rules={{
-                  required: t('required field'),
+                  required: 'required field',
                 }}
               />
               {errors.name && (
@@ -88,7 +85,7 @@ const DynamicForm = ({
       })}
 
       <Button
-        title={t('taxesText.postForm.submitBtn')}
+        title={t('taxDetailScreen.postForm.submitBtn')}
         onPress={handleSubmit(submit)}
         loading={editLoading}
         disabled={editLoading}

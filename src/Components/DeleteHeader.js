@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -10,10 +11,10 @@ import { setDeleteMode } from '@/Store/Taxes'
 
 const DeleteHeader = ({
   allSelecteds,
-  deselectAllTaxes,
-  selectAllTaxes,
+  deselectAllItems,
+  selectAllItems,
   setShowDeleteModal,
-  taxesSelecteds,
+  itemsSelecteds,
 }) => {
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const { t } = useTranslation()
@@ -24,7 +25,7 @@ const DeleteHeader = ({
   }
 
   const openModal = () => {
-    if (taxesSelecteds.length) {
+    if (itemsSelecteds.length) {
       setShowDeleteModal(true)
     }
   }
@@ -53,7 +54,7 @@ const DeleteHeader = ({
         </TouchableOpacity>
         <View style={[Layout.row, Layout.alignItemsCenter]}>
           <TouchableOpacity
-            onPress={allSelecteds ? deselectAllTaxes : selectAllTaxes}
+            onPress={allSelecteds ? deselectAllItems : selectAllItems}
           >
             <Text style={[Fonts.headline]}>
               {allSelecteds
@@ -73,3 +74,19 @@ const DeleteHeader = ({
 }
 
 export default DeleteHeader
+
+DeleteHeader.propTypes = {
+  allSelecteds: PropTypes.number,
+  deselectAllItems: PropTypes.func,
+  selectAllItems: PropTypes.func,
+  setShowDeleteModal: PropTypes.func,
+  itemsSelecteds: PropTypes.array,
+}
+
+DeleteHeader.defaultProps = {
+  allSelecteds: 0,
+  deselectAllItems: () => {},
+  selectAllItems: () => {},
+  setShowDeleteModal: () => {},
+  itemsSelecteds: [],
+}

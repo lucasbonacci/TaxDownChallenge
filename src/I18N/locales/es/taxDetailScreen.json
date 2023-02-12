@@ -1,0 +1,18 @@
+{
+    "postForm":{
+    "label":{
+      "age":"Edad",
+      "surname":"Apellido",
+      "name":"Nombre"
+    },
+    "placeholder":{
+      "age":"Tu edad",
+      "surname":"Tu apellido",
+      "name":"Tu primer nombre"
+    },
+    "addPhoto": "Agregar Foto",
+    "header":"Agregar Informacion",
+    "seeMyList":"Mirar mi lista",
+    "submitBtn":"Enviar"
+}
+}

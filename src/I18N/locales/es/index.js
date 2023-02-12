@@ -10,4 +10,5 @@ export default {
   shareMessages: require('./shareMessages.json'),
   deleteHeader: require('./deleteHeader.json'),
   deleteModal: require('./deleteModal.json'),
+  taxDetailScreen: require('./taxDetailScreen.json'),
 }

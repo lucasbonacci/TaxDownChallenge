@@ -1,9 +1,9 @@
 {
 "deleteMode": {
     "modal":{
-        "header": "Are you sure you want to do this action?" ,
-        "cancelBtn": "Cancel",
-        "confirmBtn": "Confirm"
+        "header": "Estas seguro que queres realizar esta accion?" ,
+        "cancelBtn": "Cancelar",
+        "confirmBtn": "Confirmar"
     }
 }
 }
