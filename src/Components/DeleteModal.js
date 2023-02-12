@@ -17,13 +17,13 @@ const DeleteModal = ({
     <Modal modalVisible={showDeleteModal} setModalVisible={setShowDeleteModal}>
       <View style={[Gutters.smallHMargin]}>
         <Text style={[Fonts.headline, Gutters.smallVPadding]}>
-          {t('taxesText.deleteMode.modal.header')}
+          {t('deleteModal.deleteMode.modal.header')}
         </Text>
 
         <View style={[Gutters.regularVMargin]}>
           <View style={[Layout.column, Gutters.tinyRPadding]}>
             <Button
-              title={t('taxesText.deleteMode.modal.confirmBtn')}
+              title={t('deleteModal.deleteMode.modal.confirmBtn')}
               variant="primary"
               onPress={dispatchDeletesActions}
               loading={deleteLoading}
@@ -41,7 +41,7 @@ const DeleteModal = ({
                 { color: Colors.primary },
               ]}
             >
-              {t('taxesText.deleteMode.modal.cancelBtn')}
+              {t('deleteModal.deleteMode.modal.cancelBtn')}
             </Text>
           </TouchableOpacity>
         </View>

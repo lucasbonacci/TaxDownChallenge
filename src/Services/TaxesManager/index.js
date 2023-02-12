@@ -73,6 +73,32 @@ class TaxesManager {
     })
   }
 
+  getTax = id => {
+    return new Promise((resolve, reject) => {
+      try {
+        let listRef = database().ref(`taxes/${id}`)
+
+        listRef.once(
+          'value',
+          listSnap => {
+            const item = listSnap.val()
+
+            resolve({
+              item,
+            })
+          },
+          error => {
+            AlertError(error)
+            reject()
+          },
+        )
+      } catch (error) {
+        AlertError(error)
+        reject()
+      }
+    })
+  }
+
   addTax = async data => {
     return new Promise((resolve, reject) => {
       try {
@@ -92,6 +118,19 @@ class TaxesManager {
       try {
         const collectionRef = database().ref(`taxes/${id}`)
         collectionRef.ref.remove()
+        resolve()
+      } catch (error) {
+        AlertError(error)
+        reject()
+      }
+    })
+  }
+
+  editTax = async (data, id) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const collectionRef = database().ref(`taxes/${id}`)
+        collectionRef.ref.set(data)
         resolve()
       } catch (error) {
         AlertError(error)

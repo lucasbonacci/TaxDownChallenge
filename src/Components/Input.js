@@ -37,7 +37,7 @@ const Input = ({
       <View style={[Layout.fullWidth, { position: 'relative' }]}>
         <TextInput
           {...rest}
-          placeholderTextColor={Colors.blue5}
+          placeholderTextColor={Colors.gray3}
           style={[
             Common.textInput,
             { borderColor, ...style },

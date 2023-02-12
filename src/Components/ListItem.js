@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import { useTheme } from '@/Hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSquare, faSquareCheck } from '@fortawesome/free-solid-svg-icons'
+import { navigate } from '@/Navigators/utils'
 
 const ListItem = ({
   item,
@@ -16,7 +17,12 @@ const ListItem = ({
   const { Layout, Gutters, Colors } = useTheme()
 
   return (
-    <View
+    <TouchableOpacity
+      onPress={
+        deleteMode
+          ? () => selectTaxes(item.id)
+          : () => navigate('taxDetail', { id: item.id })
+      }
       style={[
         Layout.row,
         Layout.justifyContentBetween,
@@ -43,7 +49,7 @@ const ListItem = ({
             }
             containerStyle={{ margin: 0, padding: 0 }}
             checked={taxesSelecteds?.includes(item.id)}
-            onPress={() => selectTaxes(item.id)}
+            disabled={true}
           />
         )}
         <Text>{item.name}</Text>
@@ -51,7 +57,7 @@ const ListItem = ({
       <View style={[Layout.row, Layout.justifyContentBetween]}>
         <Text>{item.year}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

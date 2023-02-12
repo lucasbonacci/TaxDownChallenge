@@ -8,25 +8,6 @@
     "none":"None",
     "noFounded": "No se encontro ningun impuesto"
     },
-"addForm":{
-    "name":"nombre del impuesto",
-    "year":"anio del impuesto",
-    "active":"Este impuesto esta activo?",
-    "addBtn":"Agregar"
-        },
-"errorMessages": {
-    "name": {
-        "required": "Nombre es un campo requerido"
-    },
-    "active": {
-        "required": "es un campo requerido"
-    },
-    "year": {
-        "required": "year es un campo requerido",
-        "negative": "El numero es negativo",
-        "higher": "Es mayor que 2023"
-    }
-},
 "deleteMode": {
     "selectAllBtnLabel": "Select All",
     "deselectAllBtnLabel": "Deselect All",
@@ -37,5 +18,20 @@
         "cancelBtn": "Cancel",
         "confirmBtn": "Confirm"
     }
-  }
+  },
+  "postForm":{
+    "label":{
+      "age":"Age",
+      "surname":"Surname",
+      "name":"Name"
+    },
+    "placeholder":{
+      "age":"Your age",
+      "surname":"Your last name",
+      "name":"Your first name"
+    },
+    "addPhoto": "Add Photo",
+    "header":"Agregar Data",
+    "submitBtn":"Enviar"
+}
 }

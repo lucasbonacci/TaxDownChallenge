@@ -63,7 +63,7 @@ const TaxListView = ({
         <ScrollView>
           {deleteMode && (
             <Text style={[Fonts.headline]}>
-              {t('taxesText.deleteMode.headerDeleteMode', {
+              {t('taxListScreen.deleteMode.headerDeleteMode', {
                 checkedItemsCount: taxesSelecteds.length,
               })}
             </Text>
@@ -107,7 +107,7 @@ const TaxListView = ({
               <Loading />
             ) : list?.length === 0 ? (
               <Text style={[Fonts.headline, Fonts.textCenter]}>
-                {t('taxesText.labels.noFounded')}
+                {t('taxListScreen.labels.noFounded')}
               </Text>
             ) : (
               list?.map((item, index) => {

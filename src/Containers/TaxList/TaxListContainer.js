@@ -99,21 +99,21 @@ const TaxListContainer = () => {
   const itemsTab = [
     {
       id: 'activeTaxes',
-      title: t('taxesText.labels.activeTaxes'),
+      title: t('taxListScreen.labels.activeTaxes'),
       action: () => {
         setActiveTab('activeTaxes')
       },
     },
     {
       id: 'inactiveTaxes',
-      title: t('taxesText.labels.inactiveTaxes'),
+      title: t('taxListScreen.labels.inactiveTaxes'),
       action: () => {
         setActiveTab('inactiveTaxes')
       },
     },
     {
       id: 'allTaxes',
-      title: t('taxesText.labels.allTaxes'),
+      title: t('taxListScreen.labels.allTaxes'),
       action: () => {
         setActiveTab('allTaxes')
       },
@@ -123,7 +123,7 @@ const TaxListContainer = () => {
   const itemsTabSelects = [
     {
       id: 'age',
-      title: t('taxesText.labels.byAge'),
+      title: t('taxListScreen.labels.byAge'),
       action: () => {
         setSelectedValueAge('0')
         setSelectedValueYear('')
@@ -132,7 +132,7 @@ const TaxListContainer = () => {
     },
     {
       id: 'year',
-      title: t('taxesText.labels.byYear'),
+      title: t('taxListScreen.labels.byYear'),
       action: () => {
         setSelectedValueAge('')
         setSelectedValueYear('1800')
@@ -141,7 +141,7 @@ const TaxListContainer = () => {
     },
     {
       id: 'none',
-      title: t('taxesText.labels.none'),
+      title: t('taxListScreen.labels.none'),
       action: () => {
         setSelectedValueYear('')
         setSelectedValueAge('')

@@ -23,14 +23,14 @@ const AddTaxContainer = () => {
   const itemsTab = [
     {
       id: 'true',
-      title: t('taxesText.addForm.true'),
+      title: t('addTaxScreen.addForm.true'),
       action: () => {
         setisTaxActive('true')
       },
     },
     {
       id: 'false',
-      title: t('taxesText.addForm.false'),
+      title: t('addTaxScreen.addForm.false'),
       action: () => {
         setisTaxActive('false')
       },
