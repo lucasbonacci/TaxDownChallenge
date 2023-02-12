@@ -17,6 +17,7 @@ export const Colors = {
   // Grays
   gray: '#f4f4f4',
   gray1: '#f2f2f2',
+  gray2: '#5C5C5C',
   gray3: '#929192',
 
   //blues

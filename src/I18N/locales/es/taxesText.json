@@ -14,19 +14,25 @@
     "active":"Este impuesto esta activo?",
     "addBtn":"Agregar"
         },
-"errorMessages": {
-    "name": {
-        "required": "Nombre es un campo requerido"
-    },
-    "active": {
-        "required": "es un campo requerido"
-    },
-    "year": {
-        "required": "year es un campo requerido",
-        "negative": "El numero es negativo",
-        "higher": "Es mayor que 2023"
-    }
-},
+        "errorMessages": {
+            "name": {
+                "required": "name is required"
+            },
+            "active": {
+                "required": "is required"
+            },
+            "age": {
+                "required": "is required"
+            },
+            "surname": {
+                "required": "is required"
+            },
+            "year": {
+                "required": "year is required",
+                "negative": "the number is negative",
+                "higher": "the number is higher than 2023"
+            }
+        },
 "deleteMode": {
     "selectAllBtnLabel": "Select All",
     "deselectAllBtnLabel": "Deselect All",
@@ -37,5 +43,20 @@
         "cancelBtn": "Cancel",
         "confirmBtn": "Confirm"
     }
-  }
+  },
+  "postForm":{
+    "label":{
+      "age":"Age",
+      "surname":"Surname",
+      "name":"Name"
+    },
+    "placeholder":{
+      "age":"Your age",
+      "surname":"Your last name",
+      "name":"Your first name"
+    },
+    "addPhoto": "Add Photo",
+    "header":"Agregar Data",
+    "submitBtn":"Enviar"
+}
 }

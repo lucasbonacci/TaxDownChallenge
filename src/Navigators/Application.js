@@ -9,6 +9,7 @@ import {
   LoginContainer,
   CreateAccountContainer,
   LoadingView,
+  TaxItemDetailContainer,
 } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
@@ -69,6 +70,18 @@ const ApplicationNavigator = () => {
                 headerRight: () => (
                   <SVG.Logo height={150} width={150} fillColor="none" />
                 ),
+              }
+            }}
+          />
+          <Stack.Screen
+            name="taxDetail"
+            component={TaxItemDetailContainer}
+            options={({ navigation }) => {
+              return {
+                headerShown: true,
+                tabBarShowLabel: false,
+                title: '',
+                headerLeft: props => <BackButton navigation={navigation} />,
               }
             }}
           />

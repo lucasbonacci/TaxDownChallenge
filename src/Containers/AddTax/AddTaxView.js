@@ -11,8 +11,6 @@ const AddTaxView = ({ isTaxActive, itemsTab, addTaxAction, loading }) => {
   const {
     control,
     handleSubmit,
-    getValues,
-    setValue,
     setError,
     reset,
     formState: { errors },

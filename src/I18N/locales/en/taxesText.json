@@ -23,6 +23,12 @@
     "active": {
         "required": "is required"
     },
+    "age": {
+        "required": "is required"
+    },
+    "surname": {
+        "required": "is required"
+    },
     "year": {
         "required": "year is required",
         "negative": "the number is negative",
@@ -39,6 +45,21 @@
         "cancelBtn": "Cancel",
         "confirmBtn": "Confirm"
     }
+  },
+  "postForm":{
+      "label":{
+        "age":"Age",
+        "surname":"Surname",
+        "name":"Name"
+      },
+      "placeholder":{
+        "age":"Your age",
+        "surname":"Your last name",
+        "name":"Your first name"
+      },
+      "addPhoto": "Add Photo",
+      "header":"Add Data",
+      "submitBtn":"Submit"
   }
 }
 
