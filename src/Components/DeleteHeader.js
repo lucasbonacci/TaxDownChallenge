@@ -10,10 +10,10 @@ import { setDeleteMode } from '@/Store/Taxes'
 
 const DeleteHeader = ({
   allSelecteds,
-  deselectAllTaxes,
-  selectAllTaxes,
+  deselectAllItems,
+  selectAllItems,
   setShowDeleteModal,
-  taxesSelecteds,
+  itemsSelecteds,
 }) => {
   const { Common, Fonts, Gutters, Layout, Colors } = useTheme()
   const { t } = useTranslation()
@@ -24,7 +24,7 @@ const DeleteHeader = ({
   }
 
   const openModal = () => {
-    if (taxesSelecteds.length) {
+    if (itemsSelecteds.length) {
       setShowDeleteModal(true)
     }
   }
@@ -53,7 +53,7 @@ const DeleteHeader = ({
         </TouchableOpacity>
         <View style={[Layout.row, Layout.alignItemsCenter]}>
           <TouchableOpacity
-            onPress={allSelecteds ? deselectAllTaxes : selectAllTaxes}
+            onPress={allSelecteds ? deselectAllItems : selectAllItems}
           >
             <Text style={[Fonts.headline]}>
               {allSelecteds

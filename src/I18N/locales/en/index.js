@@ -10,4 +10,6 @@ export default {
   deleteModal: require('./deleteModal.json'),
   headerTitles: require('./headerTitles.json'),
   shareMessages: require('./shareMessages.json'),
+  taxDetailScreen: require('./taxDetailScreen.json'),
+  openCamera: require('./openCamera.json'),
 }

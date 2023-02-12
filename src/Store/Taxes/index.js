@@ -6,8 +6,9 @@ const initialState = {
   list: [],
   item: {},
   loading: false,
-  editLoading: false,
+  addSubmissionLoading: false,
   deleteMode: false,
+  submissionList: [],
 }
 
 export const getTaxes = createAsyncThunk('get_taxes', async data => {
@@ -21,15 +22,19 @@ export const getTaxes = createAsyncThunk('get_taxes', async data => {
   }
 })
 
-export const getTax = createAsyncThunk('get_tax', async ({ id }) => {
-  try {
-    const response = await TaxesManager.getTax(id)
-    return response
-  } catch (err) {
-    AlertError(err.message)
-    throw err
-  }
-})
+export const getTaxSubmission = createAsyncThunk(
+  'get_tax_submission',
+  async ({ data, id }) => {
+    try {
+      console.log({ data, id })
+      const response = await TaxesManager.getTaxSubmission(data, id)
+      return response
+    } catch (err) {
+      AlertError(err.message)
+      throw err
+    }
+  },
+)
 
 export const addTax = createAsyncThunk('add_tax', async data => {
   try {
@@ -53,15 +58,18 @@ export const deleteTax = createAsyncThunk('delete_tax', async ({ id }) => {
   }
 })
 
-export const editTax = createAsyncThunk('edit_tax', async ({ data, id }) => {
-  try {
-    const response = await TaxesManager.editTax(data, id)
-    return response
-  } catch (err) {
-    AlertError(err.message)
-    throw err
-  }
-})
+export const addSubmission = createAsyncThunk(
+  'add_submission',
+  async ({ data, id }) => {
+    try {
+      const response = await TaxesManager.addSubmission(data, id)
+      return response
+    } catch (err) {
+      AlertError(err.message)
+      throw err
+    }
+  },
+)
 
 const slice = createSlice({
   name: 'taxes',
@@ -82,25 +90,24 @@ const slice = createSlice({
       builder.addCase(getTaxes.rejected, state => {
         state.loading = false
       }),
-      builder.addCase(getTax.pending, state => {
+      builder.addCase(getTaxSubmission.pending, state => {
         state.loading = true
       }),
-      builder.addCase(getTax.fulfilled, (state, { payload }) => {
-        state.item = payload.item
+      builder.addCase(getTaxSubmission.fulfilled, (state, { payload }) => {
+        state.submissionList = payload.list
         state.loading = false
       }),
-      builder.addCase(getTax.rejected, state => {
+      builder.addCase(getTaxSubmission.rejected, state => {
         state.loading = false
       }),
-      builder.addCase(editTax.pending, state => {
-        state.editLoading = true
+      builder.addCase(addSubmission.pending, state => {
+        state.addSubmissionLoading = true
       }),
-      builder.addCase(editTax.fulfilled, (state, { meta: { arg } }) => {
-        state.item = arg.data
-        state.editLoading = false
+      builder.addCase(addSubmission.fulfilled, (state, { meta: { arg } }) => {
+        state.addSubmissionLoading = false
       }),
-      builder.addCase(editTax.rejected, state => {
-        state.editLoading = false
+      builder.addCase(addSubmission.rejected, state => {
+        state.addSubmissionLoading = false
       }),
       builder.addCase(addTax.pending, state => {
         state.loading = true

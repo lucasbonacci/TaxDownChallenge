@@ -14,8 +14,6 @@ class FormsManager {
           listSnap => {
             let form = listSnap.val()
 
-            console.log(form)
-
             form = Object.entries(form.inputFields)
             form = form.map(([id, value]) => ({ id, ...value }))
 

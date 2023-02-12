@@ -13,15 +13,10 @@ import {
 } from '@/Components'
 import { useTranslation } from 'react-i18next'
 
-const TaxListView = ({
-  activeTab,
-  itemsTab,
-  list,
+const SubmitListView = ({
+  submissionList,
   loading,
   ageOptions,
-  yearOptions,
-  selectedValueYear,
-  setSelectedValueYear,
   selectedValueAge,
   setSelectedValueAge,
   search,
@@ -29,14 +24,14 @@ const TaxListView = ({
   itemsTabSelects,
   activeTabSelect,
   deleteMode,
-  deselectAllTaxes,
-  selectAllTaxes,
-  taxesSelecteds,
-  selectTaxes,
+  deselectAllSubmissions,
+  selectAllSubmissions,
+  selectSubmissions,
   setShowDeleteModal,
   showDeleteModal,
   dispatchDeletesActions,
   deleteLoading,
+  submissionsSelecteds,
 }) => {
   const { Common, Gutters, Layout, Fonts } = useTheme()
   const { t } = useTranslation()
@@ -51,10 +46,10 @@ const TaxListView = ({
     >
       {deleteMode && (
         <DeleteHeader
-          allSelecteds={list.length == taxesSelecteds.length}
-          itemsSelecteds={taxesSelecteds}
-          deselectAllItems={deselectAllTaxes}
-          selectAllItems={selectAllTaxes}
+          allSelecteds={submissionList.length == submissionsSelecteds.length}
+          itemsSelecteds={submissionsSelecteds}
+          deselectAllItems={deselectAllSubmissions}
+          selectAllItems={selectAllSubmissions}
           setShowDeleteModal={setShowDeleteModal}
         />
       )}
@@ -63,14 +58,11 @@ const TaxListView = ({
           {deleteMode && (
             <Text style={[Fonts.headline]}>
               {t('taxListScreen.deleteMode.headerDeleteMode', {
-                checkedItemsCount: taxesSelecteds.length,
+                checkedItemsCount: submissionsSelecteds.length,
               })}
             </Text>
           )}
 
-          <View style={[Gutters.regularVPadding]}>
-            <Tabs activeId={activeTab} items={itemsTab} />
-          </View>
           <View style={[Gutters.smallVPadding]}>
             <Tabs
               activeId={activeTabSelect}
@@ -89,35 +81,26 @@ const TaxListView = ({
             />
           )}
 
-          {activeTabSelect === 'year' && (
-            <SelectInput
-              label="Year"
-              options={yearOptions}
-              defaultOption={selectedValueYear}
-              setOption={setSelectedValueYear}
-              style={Gutters.regularBMargin}
-            />
-          )}
           <View style={[Gutters.regularBPadding]}>
             <SearchInput value={search} setValue={setSearch} />
           </View>
           <Box>
             {loading ? (
               <Loading />
-            ) : list?.length === 0 ? (
+            ) : submissionList?.length === 0 ? (
               <Text style={[Fonts.headline, Fonts.textCenter]}>
                 {t('taxListScreen.labels.noFounded')}
               </Text>
             ) : (
-              list?.map((item, index) => {
+              submissionList?.map((item, index) => {
                 return (
                   <View key={index} index={index}>
                     <ListItem
                       item={item}
-                      lastItem={index === list.length - 1}
+                      lastItem={index === submissionList.length - 1}
                       deleteMode={deleteMode}
-                      selectItem={selectTaxes}
-                      itemsSelecteds={taxesSelecteds}
+                      selectItem={selectSubmissions}
+                      itemsSelecteds={submissionsSelecteds}
                     />
                   </View>
                 )
@@ -136,4 +119,4 @@ const TaxListView = ({
   )
 }
 
-export default TaxListView
+export default SubmitListView

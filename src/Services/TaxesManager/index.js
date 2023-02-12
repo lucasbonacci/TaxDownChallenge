@@ -73,18 +73,42 @@ class TaxesManager {
     })
   }
 
-  getTax = id => {
+  getTaxSubmission = (data, id) => {
     return new Promise((resolve, reject) => {
+      console.log(data, id)
       try {
-        let listRef = database().ref(`taxes/${id}`)
+        let listRef = database().ref(`taxes/${id}/form`)
 
         listRef.once(
           'value',
           listSnap => {
-            const item = listSnap.val()
+            let list = listSnap.val()
+
+            if (list !== null) {
+              list = Object.entries(list).map(([id, details]) => ({
+                id,
+                ...details,
+              }))
+
+              // Filtrado por name
+              if (data.searchDebounce) {
+                list = list.filter(submission =>
+                  submission.name
+                    .toLowerCase()
+                    .includes(data.searchDebounce.toLowerCase()),
+                )
+              }
+
+              // Filtrado por age
+              if (data.selectedAgeDebounce) {
+                list = list.filter(
+                  submission => submission.age === data.selectedAgeDebounce,
+                )
+              }
+            }
 
             resolve({
-              item,
+              list,
             })
           },
           error => {
@@ -126,11 +150,11 @@ class TaxesManager {
     })
   }
 
-  editTax = async (data, id) => {
+  addSubmission = async (data, id) => {
     return new Promise((resolve, reject) => {
       try {
-        const collectionRef = database().ref(`taxes/${id}`)
-        collectionRef.ref.set(data)
+        const collectionRef = database().ref(`taxes/${id}/form`)
+        collectionRef.ref.push(data)
         resolve()
       } catch (error) {
         AlertError(error)

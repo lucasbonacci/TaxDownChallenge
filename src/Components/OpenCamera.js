@@ -25,7 +25,7 @@ const OpenCamera = ({ imagePath, setImagePath }) => {
   return (
     <View style={(Layout.alignItemsCenter, Gutters.regularVPadding)}>
       <Button
-        title={t('taxesText.postForm.addPhoto')}
+        title={t('openCamera.AddPhoto')}
         variant={'default'}
         onPress={openCamera}
       />

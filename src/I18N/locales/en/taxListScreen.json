@@ -19,22 +19,8 @@
         "cancelBtn": "Cancel",
         "confirmBtn": "Confirm"
     }
-  },
-  "postForm":{
-      "label":{
-        "age":"Age",
-        "surname":"Surname",
-        "name":"Name"
-      },
-      "placeholder":{
-        "age":"Your age",
-        "surname":"Your last name",
-        "name":"Your first name"
-      },
-      "addPhoto": "Add Photo",
-      "header":"Add Data",
-      "submitBtn":"Submit"
   }
+  
 }
 
 
