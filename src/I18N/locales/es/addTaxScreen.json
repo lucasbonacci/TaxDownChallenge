@@ -1,29 +1,29 @@
 {
     "addForm":{
-    "name":"tax name",
-    "year":"tax year",
-    "active":"Is this tax active?",
-    "true":"true",
-    "false":"false",
-    "addBtn":"Add"
+    "name":"Nombre del impuesto",
+    "year":"Año del impuesto",
+    "active":"Este impuesto esta activo?",
+    "true":"Si",
+    "false":"No",
+    "addBtn":"Agregar"
     },
 "errorMessages": {
     "name": {
-        "required": "name is required"
+        "required": "Nombre es requerido"
     },
     "active": {
-        "required": "is required"
+        "required": "es requerido"
     },
     "age": {
-        "required": "is required"
+        "required": "es requerido"
     },
     "surname": {
-        "required": "is required"
+        "required": "es requerido"
     },
     "year": {
-        "required": "year is required",
-        "negative": "the number is negative",
-        "higher": "the number is higher than 2023"
+        "required": "Año es requerido",
+        "negative": "El numero es negativo",
+        "higher": "El numero es mayor que 2023"
     }
 }
 }

@@ -59,7 +59,7 @@ const TaxListView = ({
         <ScrollView>
           {deleteMode && (
             <Text style={[Fonts.headline]}>
-              {t('taxListScreen.deleteMode.headerDeleteMode', {
+              {t('deleteHeader.deleteMode.headerDeleteMode', {
                 checkedItemsCount: taxesSelecteds.length,
               })}
             </Text>

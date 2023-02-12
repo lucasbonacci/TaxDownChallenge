@@ -57,7 +57,7 @@ const SubmitListView = ({
         <ScrollView>
           {deleteMode && (
             <Text style={[Fonts.headline]}>
-              {t('taxListScreen.deleteMode.headerDeleteMode', {
+              {t('deleteHeader.deleteMode.headerDeleteMode', {
                 checkedItemsCount: submissionsSelecteds.length,
               })}
             </Text>

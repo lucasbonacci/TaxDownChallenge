@@ -1,13 +1,13 @@
 {
     "deleteMode": {
-    "selectAllBtnLabel": "Select All",
-    "deselectAllBtnLabel": "Deselect All",
-    "deleteBtnLabel": "Delete",
-    "headerDeleteMode": "{{checkedItemsCount}} selected",
+    "selectAllBtnLabel": "Seleccionar Todos",
+    "deselectAllBtnLabel": "Deseleccionar Todos",
+    "deleteBtnLabel": "Borrar",
+    "headerDeleteMode": "{{checkedItemsCount}} Seleccionados",
     "modal":{
-        "header": "Are you sure you want to do this action?" ,
-        "cancelBtn": "Cancel",
-        "confirmBtn": "Confirm"
+        "header": "Estas seguro que queres realizar esta accion?" ,
+        "cancelBtn": "Cancelar",
+        "confirmBtn": "Confirmar"
     }
 }
 }

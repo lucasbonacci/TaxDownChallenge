@@ -7,21 +7,10 @@
     "byAge":"Age",
     "none":"None",
     "noFounded": "No tax found"
-    },
-
-"deleteMode": {
-    "selectAllBtnLabel": "Select All",
-    "deselectAllBtnLabel": "Deselect All",
-    "deleteBtnLabel": "Delete",
-    "headerDeleteMode": "{{checkedItemsCount}} selected",
-    "modal":{
-        "header": "Are you sure you want to do this action?" ,
-        "cancelBtn": "Cancel",
-        "confirmBtn": "Confirm"
     }
-  }
-  
 }
+
+
 
 
 
