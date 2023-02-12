@@ -30,11 +30,6 @@ const CreateAccountView = ({ createAccountAction, loading }) => {
   } = useForm({
     mode: 'onTouched',
     reValidateMode: 'onSubmit',
-    defaultValues: {
-      email: 'lucas+9988@imajine.com',
-      password: 'Lucas123!',
-      repeatPassword: 'Lucas123!',
-    },
   })
 
   const submit = async values => {

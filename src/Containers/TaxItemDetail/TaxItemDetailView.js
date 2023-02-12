@@ -5,7 +5,15 @@ import { Box, Loading, Input, Button } from '@/Components'
 import { useTranslation } from 'react-i18next'
 import { useForm, Controller } from 'react-hook-form'
 
-const TaxItemDetailView = ({ loading, item, editTaxAction }) => {
+const TaxItemDetailView = ({
+  loading,
+  item,
+  editTaxAction,
+  openCamera,
+  imagePath,
+  editLoading,
+  setImagePath,
+}) => {
   const { Common, Gutters, Layout, Colors, Fonts } = useTheme()
   const { t } = useTranslation()
 
@@ -26,7 +34,8 @@ const TaxItemDetailView = ({ loading, item, editTaxAction }) => {
     let age = parseInt(values.age)
     if (age <= 100 && age >= 0) {
       editTaxAction(values)
-      //reset()
+      setImagePath(null)
+      reset()
     } else {
       setError('age', { message: 'Year must be between 0 and 100' })
     }
@@ -172,14 +181,18 @@ const TaxItemDetailView = ({ loading, item, editTaxAction }) => {
           <Button
             title={t('taxesText.postForm.addPhoto')}
             variant={'default'}
+            onPress={openCamera}
           />
+          {imagePath && (
+            <Text style={[Gutters.regularVPadding]}>{imagePath}</Text>
+          )}
         </View>
       </ScrollView>
       <Button
         title={t('taxesText.postForm.submitBtn')}
         onPress={handleSubmit(submit)}
-        loading={loading}
-        disabled={loading}
+        loading={editLoading}
+        disabled={editLoading}
       />
     </View>
   )
