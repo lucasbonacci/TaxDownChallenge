@@ -34,6 +34,8 @@ const DynamicForm = ({
   return (
     <View>
       {form.map((item, index) => {
+        const message = `taxesText.errorMessages.${item.id}`
+        console.log(message)
         if (item.type === 'text' || item.type === 'number') {
           return (
             <View key={index} style={[Gutters.smallVPadding, Layout.fullWidth]}>
@@ -58,9 +60,9 @@ const DynamicForm = ({
                   />
                 )}
                 name={item.id}
-                //   rules={{
-                //     required: t(`taxesText.errorMessages.${name}`),
-                //   }}
+                rules={{
+                  required: t('required field'),
+                }}
               />
               {errors.name && (
                 <Text
@@ -78,7 +80,9 @@ const DynamicForm = ({
         }
         if (item.type === 'picture') {
           return (
-            <OpenCamera setImagePath={setImagePath} imagePath={imagePath} />
+            <View key={index}>
+              <OpenCamera setImagePath={setImagePath} imagePath={imagePath} />
+            </View>
           )
         }
       })}

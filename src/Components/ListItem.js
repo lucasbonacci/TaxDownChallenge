@@ -49,6 +49,7 @@ const ListItem = ({
             }
             containerStyle={{ margin: 0, padding: 0 }}
             checked={taxesSelecteds?.includes(item.id)}
+            disabled={true}
           />
         )}
         <Text>{item.name}</Text>

@@ -19,7 +19,12 @@ const TaxItemDetailContainer = ({ route }) => {
   }, [])
 
   const editTaxAction = values => {
-    let data = { ...item, ...values, image: imagePath }
+    let data = { ...item, ...values }
+
+    if (imagePath) {
+      data = { ...data, image: imagePath }
+    }
+
     dispatch(editTax({ data, id }))
   }
 
