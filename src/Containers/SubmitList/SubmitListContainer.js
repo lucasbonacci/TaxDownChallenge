@@ -27,6 +27,8 @@ const SubmitListContainer = ({ route }) => {
 
   const { t } = useTranslation()
 
+  console.log(submissionList)
+
   const ageOptions = generateAge()
 
   const id = route?.params?.id

@@ -91,10 +91,14 @@ class TaxesManager {
 
               // Filtrado por name
               if (data.searchDebounce) {
-                list = list.filter(submission =>
-                  submission.name
-                    .toLowerCase()
-                    .includes(data.searchDebounce.toLowerCase()),
+                list = list.filter(
+                  submission =>
+                    submission.name
+                      .toLowerCase()
+                      .includes(data.searchDebounce.toLowerCase()) ||
+                    submission.surname
+                      .toLowerCase()
+                      .includes(data.searchDebounce.toLowerCase()),
                 )
               }
 
@@ -107,7 +111,7 @@ class TaxesManager {
             }
 
             resolve({
-              list,
+              list: list ? list : [],
             })
           },
           error => {
