@@ -11,8 +11,7 @@ export const emailLogin = createAsyncThunk(
   'sign_in',
   async ({ email, password }) => {
     try {
-      const response = AuthManager.signInWithEmailAndPassword(email, password)
-      return response
+      await AuthManager.signInWithEmailAndPassword(email, password)
     } catch (err) {
       AlertError(err.message)
       throw err
@@ -22,8 +21,7 @@ export const emailLogin = createAsyncThunk(
 
 export const logout = createAsyncThunk('sign_out', async () => {
   try {
-    const response = AuthManager.signOut()
-    return response
+    await AuthManager.signOut()
   } catch (err) {
     AlertError(err.message)
     throw err
@@ -31,34 +29,26 @@ export const logout = createAsyncThunk('sign_out', async () => {
 })
 
 // authentication handling
-export const VerifyAuthState = createAsyncThunk(
-  'state_auth',
-  async (user, { dispatch }) => {
-    try {
-      if (user) {
-        navigateAndSimpleReset('Main', {
-          screen: 'Dashboard',
-        })
-      } else {
-        navigateAndSimpleReset('Login')
-      }
-    } catch (err) {
-      AlertError(err.message)
-      throw err
+export const VerifyAuthState = createAsyncThunk('state_auth', async user => {
+  try {
+    if (user) {
+      navigateAndSimpleReset('Main', {
+        screen: 'Dashboard',
+      })
+    } else {
+      navigateAndSimpleReset('Login')
     }
-  },
-)
+  } catch (err) {
+    AlertError(err.message)
+    throw err
+  }
+})
 
 export const createAccount = createAsyncThunk(
   'create_account',
   async ({ email, password }) => {
     try {
-      const response = AuthManager.createUserWithEmailAndPassword(
-        email,
-        password,
-      )
-
-      return response
+      await AuthManager.createUserWithEmailAndPassword(email, password)
     } catch (err) {
       AlertError(err.message)
       throw err

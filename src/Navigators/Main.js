@@ -1,11 +1,15 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { TaxListContainer, AddTaxContainer } from '@/Containers'
+import {
+  TaxListContainer,
+  AddTaxContainer,
+  LogoutContainer,
+} from '@/Containers'
 import { ShareButton, DeleteButton } from '@/Components'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { useTranslation } from 'react-i18next'
 import {
-  faClipboardList,
+  faRightFromBracket,
   faPlus,
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +27,7 @@ const MainNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="taxList"
+        name="Dashboard"
         component={TaxListContainer}
         options={{
           headerShown: !deleteMode,
@@ -45,7 +49,7 @@ const MainNavigator = () => {
       />
 
       <Tab.Screen
-        name="thirdStep"
+        name="AddTax"
         component={AddTaxContainer}
         options={{
           headerShown: true,
@@ -55,6 +59,24 @@ const MainNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <FontAwesomeIcon
               icon={faPlus}
+              size={size}
+              color={focused ? Colors.primary : Colors.lcGray}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Logout"
+        component={LogoutContainer}
+        options={{
+          headerShown: true,
+          tabBarShowLabel: false,
+          gestureEnabled: false,
+          title: t('headerTitles.thirdStep'),
+          tabBarIcon: ({ focused, size }) => (
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
               size={size}
               color={focused ? Colors.primary : Colors.lcGray}
             />
