@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import TaxItemDetailView from './TaxItemDetailView'
 import { getTax, editTax } from '@/Store/Taxes'
-import ImagePicker from 'react-native-image-crop-picker'
 
 const TaxItemDetailContainer = ({ route }) => {
   const dispatch = useDispatch()
@@ -20,22 +19,11 @@ const TaxItemDetailContainer = ({ route }) => {
     dispatch(editTax({ data, id }))
   }
 
-  const openCamera = () => {
-    ImagePicker.openCamera({
-      mediaType: 'photo',
-      width: 400,
-      height: 400,
-    }).then(image => {
-      setImagePath(image.path)
-    })
-  }
-
   return (
     <TaxItemDetailView
       item={item}
       loading={loading}
       editTaxAction={editTaxAction}
-      openCamera={openCamera}
       imagePath={imagePath}
       setImagePath={setImagePath}
       editLoading={editLoading}
