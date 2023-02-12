@@ -12,4 +12,5 @@ export default {
   shareMessages: require('./shareMessages.json'),
   taxDetailScreen: require('./taxDetailScreen.json'),
   openCamera: require('./openCamera.json'),
+  submitListScreen: require('./submitListScreen.json'),
 }

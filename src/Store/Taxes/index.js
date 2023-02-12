@@ -26,7 +26,6 @@ export const getTaxSubmission = createAsyncThunk(
   'get_tax_submission',
   async ({ data, id }) => {
     try {
-      console.log({ data, id })
       const response = await TaxesManager.getTaxSubmission(data, id)
       return response
     } catch (err) {
@@ -57,6 +56,19 @@ export const deleteTax = createAsyncThunk('delete_tax', async ({ id }) => {
     throw err
   }
 })
+
+export const deleteSubmission = createAsyncThunk(
+  'delete_submission',
+  async ({ idTax, idSubmission }) => {
+    try {
+      const response = await TaxesManager.deleteSubmission(idTax, idSubmission)
+      return response
+    } catch (err) {
+      AlertError(err.message)
+      throw err
+    }
+  },
+)
 
 export const addSubmission = createAsyncThunk(
   'add_submission',
@@ -129,7 +141,18 @@ const slice = createSlice({
         const newList = state.list.filter(item => item.id !== arg.id)
         state.list = newList
       }),
-      builder.addCase(deleteTax.rejected, state => {})
+      builder.addCase(deleteTax.rejected, state => {}),
+      builder.addCase(deleteSubmission.pending, state => {}),
+      builder.addCase(
+        deleteSubmission.fulfilled,
+        (state, { meta: { arg } }) => {
+          const newList = state.submissionList.filter(
+            item => item.id !== arg.idSubmission,
+          )
+          state.submissionList = newList
+        },
+      ),
+      builder.addCase(deleteSubmission.rejected, state => {})
   },
 })
 

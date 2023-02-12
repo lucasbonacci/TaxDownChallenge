@@ -18,12 +18,9 @@ const TaxListView = ({
   itemsTab,
   list,
   loading,
-  ageOptions,
   yearOptions,
   selectedValueYear,
   setSelectedValueYear,
-  selectedValueAge,
-  setSelectedValueAge,
   search,
   setSearch,
   itemsTabSelects,
@@ -78,16 +75,6 @@ const TaxListView = ({
               label={'filter by'}
             />
           </View>
-
-          {activeTabSelect === 'age' && (
-            <SelectInput
-              label="Age"
-              options={ageOptions}
-              defaultOption={selectedValueAge}
-              setOption={setSelectedValueAge}
-              style={Gutters.regularBMargin}
-            />
-          )}
 
           {activeTabSelect === 'year' && (
             <SelectInput

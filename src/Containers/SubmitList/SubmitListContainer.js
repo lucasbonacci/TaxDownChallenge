@@ -4,7 +4,11 @@ import { useTranslation } from 'react-i18next'
 import SubmitListView from './SubmitListView'
 import useDebounce from '@/Hooks/useDebounce'
 import { generateAge } from '@/Helpers/generateYear'
-import { getTaxSubmission, deleteTax, setDeleteMode } from '@/Store/Taxes'
+import {
+  getTaxSubmission,
+  deleteSubmission,
+  setDeleteMode,
+} from '@/Store/Taxes'
 
 const SubmitListContainer = ({ route }) => {
   const dispatch = useDispatch()
@@ -36,15 +40,15 @@ const SubmitListContainer = ({ route }) => {
   const dispatchDeletesActions = async () => {
     setDeleteLoading(true)
 
-    const deleteOneTax = async id => {
-      return await dispatch(deleteTax({ id }))
+    const deleteOneSubmission = async idSubmission => {
+      return await dispatch(deleteSubmission({ idTax: id, idSubmission }))
     }
 
-    await Promise.all(submissionsSelecteds.map(deleteOneTax))
+    await Promise.all(submissionsSelecteds.map(deleteOneSubmission))
     setDeleteLoading(false)
     setShowDeleteModal(false)
     setTaxesSelecteds([])
-    setDeleteMode(false)
+    dispatch(setDeleteMode(false))
   }
 
   const selectAllSubmissions = () => {
@@ -73,7 +77,7 @@ const SubmitListContainer = ({ route }) => {
       title: t('taxListScreen.labels.byAge'),
       action: () => {
         setSelectedValueAge('0')
-        setSelectedValueYear('')
+
         setActiveTabSelect('age')
       },
     },
@@ -81,7 +85,6 @@ const SubmitListContainer = ({ route }) => {
       id: 'none',
       title: t('taxListScreen.labels.none'),
       action: () => {
-        setSelectedValueYear('')
         setSelectedValueAge('')
         setActiveTabSelect('none')
       },

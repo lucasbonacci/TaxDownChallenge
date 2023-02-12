@@ -63,8 +63,8 @@ const ListItem = ({
         ]}
       >
         {item.year && <Text style={textStyle}>{item.year}</Text>}
-        {item.age && <Text style={textStyle}>{item.age}</Text>}
         {item.surname && <Text style={textStyle}>{item.surname}</Text>}
+        {item.age && <Text style={textStyle}>{item.age}</Text>}
         {item.image && <Text style={textStyle}>{item.image.slice(0, 15)}</Text>}
       </View>
     </TouchableOpacity>

@@ -89,7 +89,7 @@ const SubmitListView = ({
               <Loading />
             ) : submissionList?.length === 0 ? (
               <Text style={[Fonts.headline, Fonts.textCenter]}>
-                {t('taxListScreen.labels.noFounded')}
+                {t('submitListScreen.labels.noFounded')}
               </Text>
             ) : (
               submissionList?.map((item, index) => {

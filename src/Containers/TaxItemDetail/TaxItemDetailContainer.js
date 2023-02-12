@@ -27,8 +27,6 @@ const TaxItemDetailContainer = ({ route }) => {
     dispatch(addSubmission({ data, id: item.id }))
   }
 
-  console.log(item)
-
   return (
     <TaxItemDetailView
       item={item}
