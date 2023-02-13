@@ -8,6 +8,7 @@ grades:
 - I could be more descriptive and declare my variables better. (it's not an excuse but it worked very fast (for me) most of the code was written in 2 days)
 - he list of items should be rendered with a flatlist and not with a scrollview. since if the application were to have many items it would become slow.
 - add proptypes to all my components
+- I could check if any more functions need to be stored in memory using useCallback.
 
 https://user-images.githubusercontent.com/79149474/218352075-bde550de-f11c-4f7a-af8d-11d83e3614b0.MP4
 
